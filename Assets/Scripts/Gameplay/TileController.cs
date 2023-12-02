@@ -35,6 +35,7 @@ public class TileController : MonoBehaviour
             {
                 GameObject tileGameObject = new GameObject("Tile_" + i + "_" + j);
                 tileGameObject.transform.SetParent(Instance.transform); // Optional: Set as child of TileController for organization
+                tileGameObject.transform.localScale = Vector3.one;
                 Instance.tiles[i, j] = tileGameObject.AddComponent<Tile>();
                 Instance.tiles[i, j].SetRowColValue(i, j);
             }
