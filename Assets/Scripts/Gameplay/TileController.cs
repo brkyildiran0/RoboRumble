@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
@@ -5,11 +6,13 @@ using UnityEngine;
 
 public class TileController : MonoBehaviour
 {
-    [SerializeField] public int rowCount = 0;
-    [SerializeField] public int columnCount = 0;
+    [SerializeField] public int rowCount = 10;
+    [SerializeField] public int columnCount = 10;
     public Tile[,] tiles;
 
     public static TileController Instance;
+
+    public static event Action OnTilesCreated;
 
     private void Awake()
     {
@@ -17,9 +20,10 @@ public class TileController : MonoBehaviour
         tiles = new Tile[rowCount, columnCount];
     }
 
-    void Start()
+    private void Start()
     {
         InitializeTiles();
+        OnTilesCreated?.Invoke();
     }
 
     #region Initializers
@@ -29,7 +33,10 @@ public class TileController : MonoBehaviour
         {
             for (int j = 0; j < columnCount; j++)
             {
-                tiles[i, j].SetRowColValue(i, j);
+                GameObject tileGameObject = new GameObject("Tile_" + i + "_" + j);
+                tileGameObject.transform.SetParent(Instance.transform); // Optional: Set as child of TileController for organization
+                Instance.tiles[i, j] = tileGameObject.AddComponent<Tile>();
+                Instance.tiles[i, j].SetRowColValue(i, j);
             }
         }
     }
@@ -37,14 +44,14 @@ public class TileController : MonoBehaviour
 
     public Tile GetTile(int row, int col)
     {
-        return tiles[row, col];
+        return Instance.tiles[row, col];
     }
 
     public bool RemoveEntityOnTile(int row, int column, Entity entity)
     {
         if (tiles[row, column].Contains(entity))
         {
-            return tiles[row, column].Remove(entity);
+            return Instance.tiles[row, column].Remove(entity);
         }
 
         return false;
