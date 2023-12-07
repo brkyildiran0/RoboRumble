@@ -1,4 +1,5 @@
 
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,11 @@ public class Entity : MonoBehaviour
     public Tile GetCurrentTile()
     {
         return currentTile;
+    }
+
+    public void SetCurrentTile(Tile tile)
+    {
+        currentTile = tile;
     }
 
 }

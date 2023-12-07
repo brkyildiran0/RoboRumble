@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,4 +17,11 @@ public class MovementController : MonoBehaviour
     {
         this.isMovable = isMovable;
     }
+
+    public void DisplaceFromCurrentTile(Entity entity, int rowMovement, int columnMovement)
+    {
+        Tile startingTile = 
+        Movement()
+    }
+
 }

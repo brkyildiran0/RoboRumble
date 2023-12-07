@@ -10,7 +10,6 @@ public class TickCounter : MonoBehaviour
 
     private float timePassedAfterTick;
 
-    public static Action OnTick;
 
     private void Update()
     {
@@ -18,7 +17,7 @@ public class TickCounter : MonoBehaviour
 
         if (timePassedAfterTick > tickInterval)
         {
-            OnTick();
+            EventManager.TriggerOnTick();
             timePassedAfterTick = 0;
         }
     }

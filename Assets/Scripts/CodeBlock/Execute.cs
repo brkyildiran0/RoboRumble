@@ -7,6 +7,13 @@ public abstract class Execute : MonoBehaviour
 {
     public virtual void ExecuteContent()
     {
+        // movement scripti
+
+
+        // entity
+
+
+
         UnSubscribeToTick();
         NotifyParent();
     }
@@ -22,12 +29,12 @@ public abstract class Execute : MonoBehaviour
 
     public void SubsribeToTick()
     {
-        TickCounter.OnTick += ExecuteContent;
+        EventManager.OnTick += ExecuteContent;
     }
 
     public void UnSubscribeToTick()
     {
-        TickCounter.OnTick -= ExecuteContent;
+        EventManager.OnTick -= ExecuteContent;
     }
 
 }

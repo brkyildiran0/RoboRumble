@@ -7,6 +7,7 @@ public class Jump : Execute
     public override void ExecuteContent()
     {
         Debug.Log("jump");
+
         base.ExecuteContent();
     }
 }
