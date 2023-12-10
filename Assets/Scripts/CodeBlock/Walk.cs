@@ -6,7 +6,7 @@ public class Walk : Execute
 {
     public override void ExecuteContent()
     {
-        Debug.Log("walk");
+        entity.GetMovementController().DisplaceFromCurrentTile(0, 1);
         base.ExecuteContent();
     }
 }

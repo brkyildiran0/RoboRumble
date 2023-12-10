@@ -12,8 +12,6 @@ public class TileController : MonoBehaviour
 
     public static TileController Instance;
 
-    public static event Action OnTilesCreated;
-
     private void Awake()
     {
         Instance = this;
@@ -23,7 +21,7 @@ public class TileController : MonoBehaviour
     private void Start()
     {
         InitializeTiles();
-        OnTilesCreated?.Invoke();
+        EventManager.TriggerOnTilesCreated();
     }
 
     #region Initializers
@@ -45,6 +43,8 @@ public class TileController : MonoBehaviour
 
     public Tile GetTile(int row, int col)
     {
+        row = Math.Clamp(row, 0, rowCount - 1);
+        col = Math.Clamp(col, 0, columnCount - 1);
         return Instance.tiles[row, col];
     }
 

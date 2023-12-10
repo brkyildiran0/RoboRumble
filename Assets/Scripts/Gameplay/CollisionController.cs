@@ -36,7 +36,7 @@ public class CollisionController : MonoBehaviour
             List<Entity> entitiesOnTile = tile.GetEntitiesOnTile();
             foreach (var entity in entitiesOnTile)
             {
-                if (entity.IsCollidable())
+                if (entity.GetCollisionController().IsCollidable())
                 {
                     result.Add(entity);
                 }

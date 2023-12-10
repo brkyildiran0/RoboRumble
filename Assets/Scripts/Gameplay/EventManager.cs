@@ -3,17 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManager : MonoBehaviour
+public static class EventManager
 {
     public static Action OnTick;
     public static Action<Movement> OnMovement;
 
-    public EventManager Instance;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
+    public static Action OnTilesCreated;
 
     public static void TriggerOnTick()
     {
@@ -23,6 +18,11 @@ public class EventManager : MonoBehaviour
     public static void TriggerOnMovement(Movement movement)
     {
         OnMovement(movement);
+    }
+
+    public static void TriggerOnTilesCreated()
+    {
+        OnTilesCreated();
     }
 
 

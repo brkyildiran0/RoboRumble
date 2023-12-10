@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementCompiler : MonoBehaviour
+public class MovementCompiler
 {
     private List<Movement> currentMovements;
 
-    private void Awake()
+    public MovementCompiler()
     {
+        currentMovements = new List<Movement>();
         EventManager.OnMovement += AddMovementToList;
     }
 
@@ -16,11 +17,19 @@ public class MovementCompiler : MonoBehaviour
         currentMovements.Add(movement);
     }
 
-    private void ExecuteMovements()
+    public void ExecuteMovements()
     {
         foreach (var movement in currentMovements)
         {
+            SetTilesForEntity(movement);
         }
+        currentMovements.Clear();
+    }
+
+    private void SetTilesForEntity(Movement movement)
+    {
+        TileController.Instance.RemoveEntityOnTile(movement.startTile.row, movement.startTile.col, movement.entity);
+        TileController.Instance.AssignEntityToTile(movement.endTile.row, movement.endTile.col, movement.entity);
     }
 
 }

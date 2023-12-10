@@ -1,5 +1,6 @@
 
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,18 +8,14 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     private Tile currentTile;
-    [SerializeField] private MovementController _movementController;
-    [SerializeField] private CollisionController _collisionController;
+    private MovementController movementController;
+    private CollisionController collisionController;
 
-    public bool IsCollidable()
+    private void Awake()
     {
-        return _collisionController.IsCollidable();
-        
-    }
-
-    public bool IsMovable()
-    {
-        return _movementController.IsMovable();
+        movementController = GetComponent<MovementController>();
+        collisionController = GetComponent<CollisionController>();
+        movementController.SetCurrentMovement(new Movement(null, null, this));
     }
 
     public Tile GetCurrentTile()
@@ -31,4 +28,15 @@ public class Entity : MonoBehaviour
         currentTile = tile;
     }
 
+    public MovementController GetMovementController()
+    {
+        movementController.SetCurrentMovement(new Movement(currentTile, null, this));
+        return movementController;
+    }
+
+    public CollisionController GetCollisionController()
+    {
+        return collisionController;
+    }
+    
 }

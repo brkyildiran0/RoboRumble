@@ -4,14 +4,26 @@ using UnityEngine;
 
 public class CodeController : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> startingBlocks;
-
+    [SerializeField] private List<Execute> startingBlocks;
+    [SerializeField] private List<Entity> startingEntities;
     private void Awake()
     {
-        foreach (var block in startingBlocks)
+        EventManager.OnTilesCreated += SetTileEntities;
+        
+        for (int i = 0; i < startingBlocks.Count; i++)
         {
-            block.GetComponent<Execute>().SubsribeToTick();
+            startingBlocks[i].SubsribeToTick();
+            startingBlocks[i].SetEntity(startingEntities[i]);
         }
     }
+
+    private void SetTileEntities()
+    {
+        for (int i = 0; i < startingBlocks.Count; i++)
+        {
+            TileController.Instance.AssignEntityToTile(i , i, startingEntities[i]);
+        }
+    }
+
 
 }

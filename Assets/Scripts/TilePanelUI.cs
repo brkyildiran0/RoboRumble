@@ -24,13 +24,13 @@ public class TilePanelUI : MonoBehaviour
 
     private void OnEnable()
     {
-        TileController.OnTilesCreated += CalculateTileAmounts;
-        TileController.OnTilesCreated += DrawUITiles;
+        EventManager.OnTilesCreated += CalculateTileAmounts;
+        EventManager.OnTilesCreated += DrawUITiles;
     }
     private void OnDisable()
     {
-        TileController.OnTilesCreated -= CalculateTileAmounts;
-        TileController.OnTilesCreated -= DrawUITiles;
+        EventManager.OnTilesCreated -= CalculateTileAmounts;
+        EventManager.OnTilesCreated -= DrawUITiles;
     }
 
     public void CalculateTileAmounts()

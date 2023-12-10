@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class Execute : MonoBehaviour
 {
+    protected Entity entity;
     public virtual void ExecuteContent()
     {
         // movement scripti
@@ -37,4 +38,13 @@ public abstract class Execute : MonoBehaviour
         EventManager.OnTick -= ExecuteContent;
     }
 
+    public void SetEntity(Entity entityToAssign)
+    {
+        entity = entityToAssign;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).GetComponent<Execute>().SetEntity(entityToAssign);
+        }
+    }
+    
 }
