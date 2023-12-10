@@ -22,6 +22,7 @@ public class CodeController : MonoBehaviour
         for (int i = 0; i < startingBlocks.Count; i++)
         {
             TileController.Instance.AssignEntityToTile(i , i, startingEntities[i]);
+            startingEntities[i].transform.position = TileController.Instance.GetTile(i, i).transform.position;
         }
     }
 
