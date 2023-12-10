@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Walk : Execute
+public class WalkVertical : Execute
 {
+
+    public int rowMovementAmount;
     public override void ExecuteContent()
     {
-        entity.GetMovementController().DisplaceFromCurrentTile(0, 1);
+        entity.GetMovementController().DisplaceFromCurrentTileVertically(rowMovementAmount);
         base.ExecuteContent();
     }
 }

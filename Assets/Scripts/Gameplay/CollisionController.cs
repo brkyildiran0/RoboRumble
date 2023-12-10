@@ -27,10 +27,10 @@ public class CollisionController : MonoBehaviour
         this.collisionRadius = collisionRadius;
     }
 
-    public List<Entity> GetEntitiesWithinCollisonRadius(int row, int column)
+    public List<Entity> GetCollidableEntitiesWithinCollisonRadius(Tile curTile)
     {
         List<Entity> result = new List<Entity>();
-        List<Tile> tilesAround = TileController.Instance.GetTilesAroundPoint(row, column, collisionRadius);
+        List<Tile> tilesAround = TileController.Instance.GetTilesAroundPoint(curTile.row, curTile.col, collisionRadius);
         foreach (var tile in tilesAround)
         {
             List<Entity> entitiesOnTile = tile.GetEntitiesOnTile();
@@ -44,4 +44,6 @@ public class CollisionController : MonoBehaviour
         }
         return result;
     }
+    
+    
 }

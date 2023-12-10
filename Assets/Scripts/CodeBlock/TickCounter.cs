@@ -5,20 +5,27 @@ using System;
 
 public class TickCounter : MonoBehaviour
 {
-    [SerializeField] private float tickInterval;
+    public float tickInterval;
+
+    public static TickCounter Instance;
     
-
-    private float timePassedAfterTick;
-
-
-    private void Update()
+    private void Awake()
     {
-        timePassedAfterTick += Time.deltaTime;
+        Instance = this;
+        EventManager.OnTilesCreated += StartTickCounter;
+    }
 
-        if (timePassedAfterTick > tickInterval)
+    private void StartTickCounter()
+    {
+        StartCoroutine(TickCount());
+    }
+
+    private IEnumerator TickCount()
+    {
+        while (true)
         {
+            yield return new WaitForSeconds(tickInterval);
             EventManager.TriggerOnTick();
-            timePassedAfterTick = 0;
         }
     }
 }

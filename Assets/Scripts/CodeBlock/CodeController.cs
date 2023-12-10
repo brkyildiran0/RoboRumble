@@ -6,6 +6,7 @@ public class CodeController : MonoBehaviour
 {
     [SerializeField] private List<Execute> startingBlocks;
     [SerializeField] private List<Entity> startingEntities;
+    [SerializeField] private List<int> startingPositions;
     private void Awake()
     {
         EventManager.OnTilesCreated += SetTileEntities;
@@ -21,8 +22,9 @@ public class CodeController : MonoBehaviour
     {
         for (int i = 0; i < startingBlocks.Count; i++)
         {
-            TileController.Instance.AssignEntityToTile(i , i, startingEntities[i]);
-            startingEntities[i].transform.position = TileController.Instance.GetTile(i, i).transform.position;
+            TileController.Instance.AssignEntityToTile(startingPositions[2 * i] , startingPositions[2 * i + 1], startingEntities[i]);
+            startingEntities[i].GetCollisionController().SetIsCollidable(true);
+            startingEntities[i].transform.position = TileController.Instance.GetTile(startingPositions[2 * i], startingPositions[2 * i + 1]).transform.position;
         }
     }
 

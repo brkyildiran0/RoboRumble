@@ -9,6 +9,9 @@ public static class EventManager
     public static Action<Movement> OnMovement;
 
     public static Action OnTilesCreated;
+    public static Action<Collision> OnCollision;
+    
+    
 
     public static void TriggerOnTick()
     {
@@ -23,6 +26,11 @@ public static class EventManager
     public static void TriggerOnTilesCreated()
     {
         OnTilesCreated();
+    }
+
+    public static void TriggerOnCollision(Collision collision)
+    {
+        OnCollision(collision);
     }
 
 
