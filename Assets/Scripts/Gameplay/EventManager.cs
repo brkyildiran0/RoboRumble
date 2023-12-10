@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,12 +15,12 @@ public class EventManager : MonoBehaviour
         Instance = this;
     }
 
-    public void TriggerOnTick()
+    public static void TriggerOnTick()
     {
         OnTick();
     }
 
-    public void TriggerOnMovement(Movement movement)
+    public static void TriggerOnMovement(Movement movement)
     {
         OnMovement(movement);
     }

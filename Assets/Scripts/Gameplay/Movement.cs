@@ -1,4 +1,4 @@
-class Movement
+public class Movement
 {
     Tile startTile;
     Tile endTile;

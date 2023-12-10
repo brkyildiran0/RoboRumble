@@ -8,7 +8,7 @@ public class MovementCompiler : MonoBehaviour
 
     private void Awake()
     {
-        EventManager.Instance.OnMovement += AddMovementToList;
+        EventManager.OnMovement += AddMovementToList;
     }
 
     private void AddMovementToList(Movement movement)
@@ -20,7 +20,6 @@ public class MovementCompiler : MonoBehaviour
     {
         foreach (var movement in currentMovements)
         {
-            TileController.
         }
     }
 

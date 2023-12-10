@@ -20,8 +20,6 @@ public class MovementController : MonoBehaviour
 
     public void DisplaceFromCurrentTile(Entity entity, int rowMovement, int columnMovement)
     {
-        Tile startingTile = 
-        Movement()
     }
 
 }
