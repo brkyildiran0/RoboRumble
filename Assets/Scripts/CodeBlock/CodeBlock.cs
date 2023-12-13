@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CodeBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class CodeBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     private RectTransform dragTransform;
     private Canvas canvas;
@@ -48,4 +48,25 @@ public class CodeBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             transform.SetParent(originalParent);
         }
     }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        CodeBlock droppedBlock = eventData.pointerDrag.GetComponent<CodeBlock>();
+
+        if (droppedBlock != null)
+        {
+            droppedBlock.transform.SetParent(transform);
+
+            RectTransform droppedRect = droppedBlock.GetComponent<RectTransform>();
+            RectTransform thisRect = GetComponent<RectTransform>();
+
+            Vector2 localPos = Vector2.zero;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(thisRect, eventData.position, eventData.pressEventCamera, out localPos);
+
+            Vector2 newLocalPos = localPos - new Vector2(0f, thisRect.rect.height + 32f);
+            droppedRect.localPosition = newLocalPos;
+        }
+    }
+
+
 }
