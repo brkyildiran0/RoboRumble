@@ -8,8 +8,6 @@ public class CodeBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     private Transform originalParent;
-    public float distance = 100;
-    public Vector3 rayPostion = new Vector2(0,0.12f);
 
     void Update()
     {
@@ -26,7 +24,7 @@ public class CodeBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 CodeBlock codeBlock = result.gameObject.GetComponent<CodeBlock>();
                 if (codeBlock != null)
                 {
-                    Debug.Log("UI Element with CodeBlock script: " + result.gameObject.name);
+                    Debug.Log("CodeBlock: " + result.gameObject.name);
                 }
             }
         }
@@ -77,19 +75,41 @@ public class CodeBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         CodeBlock droppedBlock = eventData.pointerDrag.GetComponent<CodeBlock>();
 
-        if (droppedBlock != null)
+        if (droppedBlock != null) //if dont have parent
         {
-            droppedBlock.transform.SetParent(transform);
-
             RectTransform droppedRect = droppedBlock.GetComponent<RectTransform>();
             RectTransform thisRect = GetComponent<RectTransform>();
 
-            Vector2 localPos = Vector2.zero;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(thisRect, eventData.position, eventData.pressEventCamera, out localPos);
+            if (droppedBlock.transform.parent != transform)
+            {
+                droppedBlock.transform.SetParent(transform);
 
-            Vector2 newLocalPos = localPos - new Vector2(-30f, thisRect.rect.height + 32f);
-            droppedRect.anchoredPosition = newLocalPos;
-            
+                Vector2 localPos = Vector2.zero;
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(thisRect, eventData.position, eventData.pressEventCamera, out localPos);
+
+                Vector2 newLocalPos = localPos - new Vector2(-30f, thisRect.rect.height + 32f);
+                droppedRect.anchoredPosition = newLocalPos;
+            }
+            else //if it has a parent
+            {
+                List<RectTransform> childRects = new List<RectTransform>();
+                foreach (Transform child in transform)
+                {
+                    if (child != droppedRect)
+                        childRects.Add(child.GetComponent<RectTransform>());
+                }
+
+                float yOffset = -32f;
+                float currentY = droppedRect.anchoredPosition.y;
+
+                foreach (RectTransform rect in childRects)
+                {
+                    rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, currentY);
+                    currentY += yOffset;
+                }
+
+                droppedRect.anchoredPosition = new Vector2(32f, currentY);
+            }
         }
     }
 
