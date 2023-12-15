@@ -7,6 +7,23 @@ public class CodeBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     private Transform originalParent;
+    public float distance = 100;
+    public Vector3 rayPostion = new Vector2(0,0.12f);
+
+
+    void Update(){
+        RaycastHit2D hitUp = Physics2D.Raycast(transform.position+rayPostion, transform.up, distance);
+        if(hitUp.collider != null){
+            Debug.DrawLine(transform.position+rayPostion, hitUp.point, Color.red);
+        }
+        else Debug.DrawLine(transform.position+rayPostion, transform.position+rayPostion+transform.up*distance, Color.green);
+
+        RaycastHit2D hitDown = Physics2D.Raycast(transform.position+rayPostion, transform.up, distance);
+        if(hitDown.collider != null){
+            Debug.DrawLine(transform.position+rayPostion, hitDown.point, Color.red);
+        }
+        else Debug.DrawLine(transform.position+rayPostion, transform.position+rayPostion+transform.up*distance, Color.green);
+    }
 
     private void Awake()
     {
@@ -63,8 +80,9 @@ public class CodeBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             Vector2 localPos = Vector2.zero;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(thisRect, eventData.position, eventData.pressEventCamera, out localPos);
 
-            Vector2 newLocalPos = localPos - new Vector2(0f, thisRect.rect.height + 32f);
-            droppedRect.localPosition = newLocalPos;
+            Vector2 newLocalPos = localPos - new Vector2(-30f, thisRect.rect.height + 32f);
+            droppedRect.anchoredPosition = newLocalPos;
+            
         }
     }
 
