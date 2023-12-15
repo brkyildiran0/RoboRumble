@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class CodeBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
@@ -10,19 +11,25 @@ public class CodeBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public float distance = 100;
     public Vector3 rayPostion = new Vector2(0,0.12f);
 
+    void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+            pointerEventData.position = Input.mousePosition;
 
-    void Update(){
-        RaycastHit2D hitUp = Physics2D.Raycast(transform.position+rayPostion, transform.up, distance);
-        if(hitUp.collider != null){
-            Debug.DrawLine(transform.position+rayPostion, hitUp.point, Color.red);
-        }
-        else Debug.DrawLine(transform.position+rayPostion, transform.position+rayPostion+transform.up*distance, Color.green);
+            List<RaycastResult> results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointerEventData, results);
 
-        RaycastHit2D hitDown = Physics2D.Raycast(transform.position+rayPostion, transform.up, distance);
-        if(hitDown.collider != null){
-            Debug.DrawLine(transform.position+rayPostion, hitDown.point, Color.red);
+            foreach (RaycastResult result in results)
+            {
+                CodeBlock codeBlock = result.gameObject.GetComponent<CodeBlock>();
+                if (codeBlock != null)
+                {
+                    Debug.Log("UI Element with CodeBlock script: " + result.gameObject.name);
+                }
+            }
         }
-        else Debug.DrawLine(transform.position+rayPostion, transform.position+rayPostion+transform.up*distance, Color.green);
     }
 
     private void Awake()
