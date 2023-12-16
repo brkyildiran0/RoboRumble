@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
-public class CodeBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class CodeBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler//, //IDropHandler
 {
     private RectTransform dragTransform;
     private Canvas canvas;
@@ -46,18 +46,21 @@ public class CodeBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        canvasGroup.alpha = 0.6f;
+        // canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;
 
-        dragTransform.SetAsLastSibling();
+        dragTransform.SetParent(null);
+        // dragTransform.SetAsLastSibling();
         originalParent = transform.parent;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         Vector2 pos;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, canvas.worldCamera, out pos);
-        dragTransform.position = canvas.transform.TransformPoint(pos);
+        dragTransform.anchoredPosition = Input.mousePosition;
+        // OnDropped(eventData);
+        
+        
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -71,7 +74,7 @@ public class CodeBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         }
     }
 
-    public void OnDrop(PointerEventData eventData)
+    public void OnDropped(PointerEventData eventData)
     {
         CodeBlock droppedBlock = eventData.pointerDrag.GetComponent<CodeBlock>();
 

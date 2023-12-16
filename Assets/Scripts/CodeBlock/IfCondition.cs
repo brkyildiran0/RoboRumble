@@ -24,7 +24,7 @@ public class IfCondition : Execute
 
     public override void ChildExecutionComplete(int childOrder)
     {
-        if (childOrder < transform.childCount - 1)
+        if (childOrder < transform.childCount - 2)
         {
             transform.GetChild(childOrder + 1).GetComponent<Execute>().SubsribeToTick();
         }

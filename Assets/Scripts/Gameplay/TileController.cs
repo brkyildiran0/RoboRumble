@@ -21,7 +21,7 @@ public class TileController : MonoBehaviour
     private void Start()
     {
         InitializeTiles();
-        EventManager.TriggerOnTilesCreated();
+        EventManager.OnTilesCreated();
     }
 
     #region Initializers

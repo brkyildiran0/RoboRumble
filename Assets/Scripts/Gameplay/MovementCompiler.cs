@@ -39,7 +39,6 @@ public class MovementCompiler
                     DeleteAllMovementsForEntity(i, movement.entity);
                     Collision collision = new Collision(movement.entity, receiver, movement);
                     EventManager.OnCollision(collision);
-
                 }
             }
         }

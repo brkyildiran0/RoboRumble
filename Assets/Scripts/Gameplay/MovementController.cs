@@ -38,7 +38,7 @@ public class MovementController : MonoBehaviour
             SetCurrentMovement(new Movement(_currentMovement.startTile, endTile, _currentMovement.entity));
        
             DisplaceToAnotherTile(endTile);
-            EventManager.TriggerOnMovement(_currentMovement);
+            EventManager.OnMovement(_currentMovement);
 
         }
     }
@@ -55,7 +55,7 @@ public class MovementController : MonoBehaviour
             SetCurrentMovement(new Movement(_currentMovement.startTile, endTile, _currentMovement.entity));
        
             DisplaceToAnotherTile(endTile);
-            EventManager.TriggerOnMovement(_currentMovement);
+            EventManager.OnMovement(_currentMovement);
 
         }
     }

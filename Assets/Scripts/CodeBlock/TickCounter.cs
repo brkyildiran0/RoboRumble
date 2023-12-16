@@ -25,7 +25,7 @@ public class TickCounter : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(tickInterval);
-            EventManager.TriggerOnTick();
+            EventManager.OnTick();
         }
     }
 }

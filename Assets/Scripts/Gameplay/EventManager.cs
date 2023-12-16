@@ -10,28 +10,11 @@ public static class EventManager
 
     public static Action OnTilesCreated;
     public static Action<Collision> OnCollision;
+   
+    
+
     
     
-
-    public static void TriggerOnTick()
-    {
-        OnTick();
-    }
-
-    public static void TriggerOnMovement(Movement movement)
-    {
-        OnMovement(movement);
-    }
-
-    public static void TriggerOnTilesCreated()
-    {
-        OnTilesCreated();
-    }
-
-    public static void TriggerOnCollision(Collision collision)
-    {
-        OnCollision(collision);
-    }
 
 
 }
