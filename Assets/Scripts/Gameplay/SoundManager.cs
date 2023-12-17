@@ -28,25 +28,25 @@ public static class SoundManager
         soundTimerDictionary[Sound.PlayerMove] = 0f;
     }
 
-    private void Awake()
+    private static void Awake()
     {
         SoundManager.Initialize();
     }
 
     public static void PlaySound(Sound sound, Vector3 position)
     {
-        (CanPlaySound(sound)) {
+        if (CanPlaySound(sound)) {
             GameObject soundGameObject = new GameObject("sound");
             soundGameObject.transform.position = position;
             AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-            audioSource.clip = GetAudioClip(sound);
+            // audioSource.clip = GetAudioClip(sound);
             audioSource.maxDistance = 100f;
             audioSource.spatialBlend = 1f;
             audioSource.rolloffMode = AudioRolloffMode.Linear;
             audioSource.dopplerLevel = 0f;
             audioSource.Play();
 
-            Object.Destroy(soundGameObject, audioSource.clip.length);
+            // Destroy(soundGameObject, audioSource.clip.length);
         }
     }
 
@@ -60,7 +60,7 @@ public static class SoundManager
                 oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
             }
 
-            oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
+            // oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
         }
     }
 
@@ -70,7 +70,7 @@ public static class SoundManager
         {
             default:
                 return true;
-            case Sound.PlayerMove;
+            case Sound.PlayerMove:
                 if (soundTimerDictionary.ContainsKey(sound))
                 {
                     float lastTimePlayed = soundTimerDictionary[sound];
@@ -92,25 +92,25 @@ public static class SoundManager
         }
     }
 
-    private static AudioClip GetAudioClip(Sound sound)
-    {
-        foreach (GameAssets.SoundAudioClip in GameAssets.i.SoundAudioClipArray)
-        {
-            if (SoundAudioClip.sound == sound)
-            {
-                return SoundAudioClip.audioClip;
-            }
-        }
-        Debug.LogError("The sound " + sound + " couldn't be found.");
-        return null;
-    }
+    // private static AudioClip GetAudioClip(Sound sound)
+    // {
+        // foreach (var clip in GameAssets.i.SoundAudioClipArray)
+        // {
+            // if (SoundAudioClip.sound == sound)
+            // {
+                // return SoundAudioClip.audioClip;
+            // }
+        // }
+        // Debug.LogError("The sound " + sound + " couldn't be found.");
+        // return null;
+    // }
 
     //'this' in the parameter signifies that this is an extension method for Button_UI
-    public static void AddButtonSounds(this Button_UI buttonUI)
-    {
-        buttonUI.ClickFunc += () => SoundManager.PlaySound(Sound.ButtonClick);
-        buttonUI.MouseOverOnceFunc += () => SoundManager.PlaySound(Sound.ButtonAt);
-    }
+    // public static void AddButtonSounds(this Button_UI buttonUI)
+    // {
+        // buttonUI.ClickFunc += () => SoundManager.PlaySound(Sound.ButtonClick);
+        // buttonUI.MouseOverOnceFunc += () => SoundManager.PlaySound(Sound.ButtonAt);
+    // }
 }
 
 
@@ -118,7 +118,7 @@ public static class SoundManager
 
 
 // assumed there's a game assets object and class. and this is in it.
-public SoundAudioClip[] SoundAudioClipArray;
+// public SoundAudioClip[] SoundAudioClipArray;
 
 [System.Serializable]
 public class SoundAudioClip
