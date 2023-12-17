@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BlockOrderController : MonoBehaviour
 {
-    private float _yOffset = 100;
-    private float _xOffset = 100;
+    private float _yOffset = 43.5f;
+    private float _xOffset = 15;
 
     private Vector3 startPos;
 
@@ -38,10 +38,15 @@ public class BlockOrderController : MonoBehaviour
 
     private int Order( RectTransform transformToOrder, int _currentXIncrement, int _currentYIncrement)
     {
+        BlockMovementController controllerToOrder = transformToOrder.GetComponent<BlockMovementController>();
+
+        if (!controllerToOrder)
+        {
+            return _currentYIncrement;
+        }
         _currentYIncrement += 1;
 
 
-        BlockMovementController controllerToOrder = transformToOrder.GetComponent<BlockMovementController>();
         if (!controllerToOrder.isBeingDragged)
         {
             if (controllerToOrder.isEndOfStatement)

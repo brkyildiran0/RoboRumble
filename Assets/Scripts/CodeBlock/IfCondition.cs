@@ -8,9 +8,11 @@ public class IfCondition : Execute
 {
     [SerializeField] private bool isTrue;
 
+    public Condition condition;
+
     public override void ExecuteContent()
     {
-        if (isTrue)
+        if (condition.IsTrue(entity))
         {
             transform.GetChild(0).GetComponent<Execute>().SubsribeToTick();
         }

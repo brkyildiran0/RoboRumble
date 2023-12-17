@@ -10,6 +10,7 @@ public class Entity : MonoBehaviour
     private Tile currentTile;
     private MovementController movementController;
     private CollisionController collisionController;
+    
 
     private void Awake()
     {
@@ -37,6 +38,19 @@ public class Entity : MonoBehaviour
     public CollisionController GetCollisionController()
     {
         return collisionController;
+    }
+
+    public int GetValue(string key)
+    {
+        switch (key)
+        {
+            case("x pos"):
+                return currentTile.col;
+            case("y pos"):
+                return currentTile.row;
+            default:
+                return 0;
+        }
     }
     
 }

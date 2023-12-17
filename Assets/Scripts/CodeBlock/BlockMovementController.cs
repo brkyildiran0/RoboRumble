@@ -313,7 +313,14 @@ public class BlockMovementController : MonoBehaviour, IBeginDragHandler, IDragHa
 
         for (int i = 0; i < transform.childCount; i++)
         {
-            transform.GetChild(i).GetComponent<BlockMovementController>().SetIsDraggedRecursive(isDragged);
+            BlockMovementController _blockMovementController = 
+            transform.GetChild(i).GetComponent<BlockMovementController>();
+
+            if (_blockMovementController)
+            {
+                _blockMovementController.SetIsDraggedRecursive(isDragged);
+                
+            }
         }
     }
 
