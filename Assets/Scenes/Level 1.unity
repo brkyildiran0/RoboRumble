@@ -1187,6 +1187,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: While xPos Bigger Conditional Statement
       objectReference: {fileID: 0}
+    - target: {fileID: 8047444203227962999, guid: ea709b1125fcd614ebfb9b39512cd0b2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea709b1125fcd614ebfb9b39512cd0b2, type: 3}
 --- !u!224 &489123921 stripped
@@ -1569,6 +1573,10 @@ PrefabInstance:
     - target: {fileID: 4432295797005474976, guid: c6f4a4f15c97b1f43894421e13366f09, type: 3}
       propertyPath: m_Name
       value: While xPos Equals Conditional Statement
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432295797005474976, guid: c6f4a4f15c97b1f43894421e13366f09, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4432295797005474977, guid: c6f4a4f15c97b1f43894421e13366f09, type: 3}
       propertyPath: m_Pivot.x
@@ -2232,6 +2240,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: If xPos Equals Conditional Statement
       objectReference: {fileID: 0}
+    - target: {fileID: 4070334044978782299, guid: 0bb7df096c1a4f446bc8a33773faf72b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bb7df096c1a4f446bc8a33773faf72b, type: 3}
 --- !u!1001 &840063221
@@ -2315,7 +2327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 652794280093614875, guid: 65f2a7292b9ea49488fc3f98d3077dc7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -405
+      value: -302
       objectReference: {fileID: 0}
     - target: {fileID: 652794280093614875, guid: 65f2a7292b9ea49488fc3f98d3077dc7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2408,11 +2420,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8601994361433767605, guid: 5b5d4566ffe1730468905d89d096f706, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -562
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 8601994361433767605, guid: 5b5d4566ffe1730468905d89d096f706, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -417
+      value: -347
       objectReference: {fileID: 0}
     - target: {fileID: 8601994361433767605, guid: 5b5d4566ffe1730468905d89d096f706, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3316,6 +3328,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: If yPos Bigger Conditional Statement
       objectReference: {fileID: 0}
+    - target: {fileID: 686856000395545938, guid: 66b3837993e70704d98c16d98d17adb1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 686856000395545939, guid: 66b3837993e70704d98c16d98d17adb1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3420,7 +3436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1111553783
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3630,6 +3646,10 @@ PrefabInstance:
     - target: {fileID: 5099682193076220839, guid: f2c49f6b81ef5204b8f9ddcc23fc33c3, type: 3}
       propertyPath: m_Name
       value: While yPos Bigger Conditional Statement
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099682193076220839, guid: f2c49f6b81ef5204b8f9ddcc23fc33c3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2c49f6b81ef5204b8f9ddcc23fc33c3, type: 3}
@@ -4063,7 +4083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7833382754101001964, guid: 24622c82d17b7ea41b326952c1252ca3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -809
+      value: -478
       objectReference: {fileID: 0}
     - target: {fileID: 7833382754101001964, guid: 24622c82d17b7ea41b326952c1252ca3, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4097,6 +4117,10 @@ PrefabInstance:
     - target: {fileID: 8978218512867799996, guid: 6373a15739a861f479267c04ccf55843, type: 3}
       propertyPath: m_Name
       value: While yPos Equals Conditional Statement
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978218512867799996, guid: 6373a15739a861f479267c04ccf55843, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8978218512867799997, guid: 6373a15739a861f479267c04ccf55843, type: 3}
       propertyPath: m_Pivot.x
@@ -4430,11 +4454,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7833382754101001964, guid: 24622c82d17b7ea41b326952c1252ca3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -809
+      value: -478
       objectReference: {fileID: 0}
     - target: {fileID: 7833382754101001964, guid: 24622c82d17b7ea41b326952c1252ca3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -304
+      value: -367
       objectReference: {fileID: 0}
     - target: {fileID: 7833382754101001964, guid: 24622c82d17b7ea41b326952c1252ca3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4659,6 +4683,10 @@ PrefabInstance:
     - target: {fileID: 6038492648276362445, guid: 7137354ea664d9547bb0db641f65c856, type: 3}
       propertyPath: m_Name
       value: If yPos Smaller Conditional Statement
+      objectReference: {fileID: 0}
+    - target: {fileID: 6038492648276362445, guid: 7137354ea664d9547bb0db641f65c856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7137354ea664d9547bb0db641f65c856, type: 3}
@@ -5079,6 +5107,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: If xPos Smaller Conditional Statement
       objectReference: {fileID: 0}
+    - target: {fileID: 2447582476387283240, guid: 0bb6ae4e91af62243b25b73612ad5f29, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2447582476387283241, guid: 0bb6ae4e91af62243b25b73612ad5f29, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5352,7 +5384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7833382754101001964, guid: f6d9fcaaf07512049b4e6f460f75b7a0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -587
+      value: -256
       objectReference: {fileID: 0}
     - target: {fileID: 7833382754101001964, guid: f6d9fcaaf07512049b4e6f460f75b7a0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5611,6 +5643,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Move Left Input Statement
       objectReference: {fileID: 0}
+    - target: {fileID: 7833382754101001965, guid: 3cdd0420b83e80e46a1cec4db2ca98b1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cdd0420b83e80e46a1cec4db2ca98b1, type: 3}
 --- !u!1001 &1784643226
@@ -5623,6 +5659,10 @@ PrefabInstance:
     - target: {fileID: 5050542698243208406, guid: 5b69e32e04b6dec438f7055b751b0075, type: 3}
       propertyPath: m_Name
       value: If xPos Bigger Conditional Statement
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050542698243208406, guid: 5b69e32e04b6dec438f7055b751b0075, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5050542698243208407, guid: 5b69e32e04b6dec438f7055b751b0075, type: 3}
       propertyPath: m_Pivot.x
@@ -5870,6 +5910,10 @@ PrefabInstance:
     - target: {fileID: 2039534161119851332, guid: 9c342ae1c49a0e649b0f2a078cdeb3c8, type: 3}
       propertyPath: m_Name
       value: If yPos Equals Conditional Statement
+      objectReference: {fileID: 0}
+    - target: {fileID: 2039534161119851332, guid: 9c342ae1c49a0e649b0f2a078cdeb3c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2039534161119851333, guid: 9c342ae1c49a0e649b0f2a078cdeb3c8, type: 3}
       propertyPath: m_Pivot.x
@@ -6373,7 +6417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 652794280093614875, guid: 65f2a7292b9ea49488fc3f98d3077dc7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -432
+      value: -420
       objectReference: {fileID: 0}
     - target: {fileID: 652794280093614875, guid: 65f2a7292b9ea49488fc3f98d3077dc7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6683,6 +6727,10 @@ PrefabInstance:
     - target: {fileID: 7833382754101001965, guid: 95ac35cbfada70949b2edb3a7cdb9015, type: 3}
       propertyPath: m_Name
       value: Move Down Input Statement
+      objectReference: {fileID: 0}
+    - target: {fileID: 7833382754101001965, guid: 95ac35cbfada70949b2edb3a7cdb9015, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95ac35cbfada70949b2edb3a7cdb9015, type: 3}
