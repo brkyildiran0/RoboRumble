@@ -14,8 +14,14 @@ public class TilePanelUI : MonoBehaviour
     private float rectWidth, rectHeight;
     private float rowTileDimension, columnTileDimension;
 
+    public static TilePanelUI Instance;
+    
+    public List<Vector2> coloredTiles;
+
+    public Color softRed; 
     private void Awake()
     {
+        Instance = this;
         rectTransform = GetComponent<RectTransform>();
 
         rectWidth = rectTransform.rect.width;
@@ -56,9 +62,44 @@ public class TilePanelUI : MonoBehaviour
                 tileRectTransform.sizeDelta = new Vector2(rowTileDimension, columnTileDimension);
 
                 var tileImage = tileRectTransform.AddComponent<Image>();
+
+                Vector2 currentTile = new Vector2(i, j);
+                if (coloredTiles.Contains(currentTile))
+                {
+                    if (coloredTiles[coloredTiles.Count - 1] == currentTile)
+                    {
+                        tileImage.color = new Color(0, 120, 0);
+                    }
+                    else
+                    {
+                        tileImage.color = Color.white;
+                    }
+                }
+                else
+                {
+                    tileImage.color = new Color(softRed.r, softRed.g, softRed.b, softRed.a);
+                }
                 tileImage.sprite = tileSprite;
             }
         }
+    }
+
+    public int PathContains(Tile tile)
+    {
+        Vector2 tilePos = new Vector2(tile.row, tile.col);
+        if (coloredTiles.Contains(tilePos))
+        {
+            if (coloredTiles[coloredTiles.Count - 1] == tilePos)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        return -1;
     }
 
 }

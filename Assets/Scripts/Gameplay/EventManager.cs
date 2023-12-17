@@ -17,6 +17,9 @@ public static class EventManager
 
     public static Action OnPreTick;
 
+    public static Action OnGameOverSuccess;
+    public static Action OnGameOverFailure;
+
 
 
 

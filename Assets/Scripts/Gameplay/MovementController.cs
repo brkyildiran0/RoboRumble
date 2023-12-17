@@ -31,6 +31,7 @@ public class MovementController : MonoBehaviour
         int change = Math.Sign(columnMovement);
         columnMovement = Math.Abs(columnMovement);
         Tile endTile = null;
+        DoRotate(true, change == 1); 
         for (int i = 0; i < columnMovement; i++)
         {
             endTile = TileController.Instance.GetTile(_currentMovement.startTile.row,
@@ -49,7 +50,7 @@ public class MovementController : MonoBehaviour
         int change = Math.Sign(rowMovement);
         rowMovement = Math.Abs(rowMovement);
         Tile endTile = null;
-        
+        DoRotate(false, change == 1); 
         for (int i = 0; i < rowMovement; i++)
         {
             endTile = TileController.Instance.GetTile(_currentMovement.startTile.row + change,
@@ -68,6 +69,28 @@ public class MovementController : MonoBehaviour
     public void DisplaceToAnotherTile(Tile targetTile)
     {
         transform.DOMove(targetTile.transform.position, TickCounter.Instance.tickInterval);
+    }
+
+    private void DoRotate(bool isHorizontalMovement, bool isPositive)
+    {
+        if (isHorizontalMovement)
+        {
+            if (isPositive)
+            {
+                transform.DORotate(new Vector3(0, 0, -90), TickCounter.Instance.tickInterval / 4);
+                return;
+            }
+                transform.DORotate(new Vector3(0, 0, 90), TickCounter.Instance.tickInterval / 4);
+        }
+        else
+        {
+            if (isPositive)
+            {
+                transform.DORotate(new Vector3(0, 0, 0), TickCounter.Instance.tickInterval / 4);
+                return;
+            }
+                transform.DORotate(new Vector3(0, 0, -180), TickCounter.Instance.tickInterval / 4);
+        }
     }
 
     public void SetCurrentMovement(Movement movement)
