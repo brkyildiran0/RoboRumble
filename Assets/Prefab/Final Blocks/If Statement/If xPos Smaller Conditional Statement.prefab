@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 717955209096999116, guid: 54ce7241db996fc4892114c9e348b090, type: 3}
+      propertyPath: leftOperand
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 740419598573111212, guid: 54ce7241db996fc4892114c9e348b090, type: 3}
       propertyPath: m_text
       value: 'x pos

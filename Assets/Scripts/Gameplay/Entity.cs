@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Entity : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class Entity : MonoBehaviour
 
     public void SetCurrentTile(Tile tile)
     {
+        Debug.Log("tile set to " + currentTile);
         currentTile = tile;
     }
 
@@ -40,13 +42,13 @@ public class Entity : MonoBehaviour
         return collisionController;
     }
 
-    public int GetValue(string key)
+    public int GetValue(Condition.SymbolType symbolType)
     {
-        switch (key)
+        switch (symbolType)
         {
-            case("x pos"):
+            case(Condition.SymbolType.xPos):
                 return currentTile.col;
-            case("y pos"):
+            case(Condition.SymbolType.yPos):
                 return currentTile.row;
             default:
                 return 0;

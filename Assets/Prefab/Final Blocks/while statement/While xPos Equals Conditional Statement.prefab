@@ -29,6 +29,14 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 34
       objectReference: {fileID: 0}
+    - target: {fileID: 165807265088158782, guid: e7c7412fb64a53945860d33337555822, type: 3}
+      propertyPath: leftOperand
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 165807265088158782, guid: e7c7412fb64a53945860d33337555822, type: 3}
+      propertyPath: middleOperator
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7790857543297104166, guid: e7c7412fb64a53945860d33337555822, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

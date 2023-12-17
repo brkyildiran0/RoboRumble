@@ -13,6 +13,14 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 3073886139364701603, guid: 49a86758520578042b95e5ced8a50c43, type: 3}
+      propertyPath: leftOperand
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073886139364701603, guid: 49a86758520578042b95e5ced8a50c43, type: 3}
+      propertyPath: middleOperator
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4970597762781622458, guid: 49a86758520578042b95e5ced8a50c43, type: 3}
       propertyPath: m_Name
       value: If xPos Equals Conditional Statement

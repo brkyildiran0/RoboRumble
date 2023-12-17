@@ -31,7 +31,7 @@ public class CodeBlockProcessor: MonoBehaviour
 
     private IEnumerator PipeLine()
     {
-        collisionCompiler.ExecuteCollisions();
+        // collisionCompiler.ExecuteCollisions();
         yield return new WaitForSeconds(delay);
         movementCompiler.ExecuteMovements();
         

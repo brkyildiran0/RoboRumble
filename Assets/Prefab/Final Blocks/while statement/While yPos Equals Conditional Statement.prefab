@@ -19,6 +19,14 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 32
       objectReference: {fileID: 0}
+    - target: {fileID: 165807265088158782, guid: e7c7412fb64a53945860d33337555822, type: 3}
+      propertyPath: leftOperand
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 165807265088158782, guid: e7c7412fb64a53945860d33337555822, type: 3}
+      propertyPath: middleOperator
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6017263258194994216, guid: e7c7412fb64a53945860d33337555822, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.1237

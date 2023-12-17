@@ -48,18 +48,20 @@ public class MovementController : MonoBehaviour
     {
         int change = Math.Sign(rowMovement);
         rowMovement = Math.Abs(rowMovement);
+        Tile endTile = null;
         
         for (int i = 0; i < rowMovement; i++)
         {
-            Debug.Log(_currentMovement.startTile.row);
-            Tile endTile = TileController.Instance.GetTile(_currentMovement.startTile.row + change,
+            endTile = TileController.Instance.GetTile(_currentMovement.startTile.row + change,
                 _currentMovement.startTile.col);
             SetCurrentMovement(new Movement(_currentMovement.startTile, endTile, _currentMovement.entity));
        
-            DisplaceToAnotherTile(endTile);
             EventManager.OnMovement(_currentMovement);
+            
+            SetCurrentMovement(new Movement(endTile, null, _currentMovement.entity));
 
         }
+            DisplaceToAnotherTile(endTile);
     }
 
 

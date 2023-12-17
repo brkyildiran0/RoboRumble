@@ -13,6 +13,7 @@ public class IfCondition : Execute
     {
         if (condition.IsTrue(entity))
         {
+            Debug.Log("condition is true");
             var execute = transform.GetChild(0).GetComponent<Execute>();
             if (execute)
             {
@@ -33,7 +34,7 @@ public class IfCondition : Execute
 
     public override void ChildExecutionComplete(int childOrder)
     {
-        if (childOrder < transform.childCount - 2)
+        if (childOrder < transform.childCount - 3)
         {
             transform.GetChild(childOrder + 1).GetComponent<Execute>().SubsribeToTick();
         }

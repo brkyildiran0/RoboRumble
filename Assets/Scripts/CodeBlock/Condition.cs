@@ -6,61 +6,75 @@ using UnityEngine;
 
 public class Condition : MonoBehaviour
 {
-    public TextMeshProUGUI leftOperand;
-    public TextMeshProUGUI middleOperator;
+    public SymbolType leftOperand;
+    public SymbolType middleOperator;
     public TextMeshProUGUI rightOperand;
 
-    private enum SymbolType
+    public enum SymbolType
     {
         SmallerThan,
         BiggerThan,
         Equals,
+        xPos,
+        yPos,
+        Number
     }
 
     public bool IsTrue(Entity entity)
     {
-        switch (InterpretOperator(middleOperator.text))
+        switch (middleOperator)
         {
             case (SymbolType.Equals):
-                return InterpretOperand(entity, leftOperand.text) == InterpretOperand(entity, rightOperand.text);
+                return InterpretOperand(entity, leftOperand) == InterpretOperand(entity, SymbolType.Number);
             case (SymbolType.BiggerThan):
-                return InterpretOperand(entity, leftOperand.text) > InterpretOperand(entity, rightOperand.text);
+                return InterpretOperand(entity, leftOperand) > InterpretOperand(entity, SymbolType.Number);
             case (SymbolType.SmallerThan):
-                return InterpretOperand(entity, leftOperand.text) < InterpretOperand(entity, rightOperand.text);
+                
+                return InterpretOperand(entity, leftOperand) < InterpretOperand(entity, SymbolType.Number);
             default:
                 return false;
         }
         
     }
 
-    private SymbolType InterpretOperator(string text)
+    private int InterpretOperand(Entity entity, SymbolType symbolType)
     {
-        switch (text)
+        switch (symbolType)
         {
-            case ("smaller than"):
-                return SymbolType.SmallerThan;
-            case ("bigger than"):
-                return SymbolType.BiggerThan;
-            case ("equals"):
-                return SymbolType.Equals;
+            case (SymbolType.xPos):
+                
+                Debug.Log("returned from entity: " + entity.GetValue(symbolType));
+                return entity.GetValue(symbolType);
+            case (SymbolType.yPos):
+                return entity.GetValue(symbolType);
+            case (SymbolType.Number):
+                return ParseInteger(rightOperand.text); 
             default:
-                return SymbolType.Equals;
-        }
-    }
-
-    private int InterpretOperand(Entity entity, string text)
-    {
-        switch (text)
-        {
-            case ("x pos"):
-                return entity.GetValue(text);
-            case ("y pos"):
-                return entity.GetValue(text); 
-            default:
-                Debug.Log(transform.parent.name);
-                return int.Parse(text);
+                return 0;
         }
             
+    }
+
+    private int ParseInteger(string text)
+    {
+        int result = 0;
+        if (text.Length <= 1)
+        {
+            return result;
+        }
+
+        bool parsed = int.TryParse(text, out result);
+        if (!parsed)
+        {
+            text = text.Substring(0, 1);
+            int.TryParse(text, out result);
+        }
+        return result;
+    }
+
+    private string ParseText(string text)
+    {
+        return text.Substring(0, text.Length - 1);
     }
 
 }

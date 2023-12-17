@@ -19,6 +19,14 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 32
       objectReference: {fileID: 0}
+    - target: {fileID: 3079264891090084023, guid: bf7c1d654c467614495cf10844013c13, type: 3}
+      propertyPath: leftOperand
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3079264891090084023, guid: bf7c1d654c467614495cf10844013c13, type: 3}
+      propertyPath: middleOperator
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4965219030381553070, guid: bf7c1d654c467614495cf10844013c13, type: 3}
       propertyPath: m_Name
       value: While yPos Bigger Conditional Statement
