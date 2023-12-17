@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class IfCondition : Execute
 {
-    [SerializeField] private bool isTrue;
 
     public Condition condition;
 
@@ -14,7 +13,15 @@ public class IfCondition : Execute
     {
         if (condition.IsTrue(entity))
         {
-            transform.GetChild(0).GetComponent<Execute>().SubsribeToTick();
+            var execute = transform.GetChild(0).GetComponent<Execute>();
+            if (execute)
+            {
+                execute.SubsribeToTick();
+            }
+            else
+            {
+                NotifyParent();
+            }
         }
         else
         {

@@ -10,11 +10,17 @@ public static class EventManager
 
     public static Action OnTilesCreated;
     public static Action<Collision> OnCollision;
-   
-    
 
-    
-    
+    public static Action ManualTickButtonPressed;
+    public static Action ResetButtonPressed;
+    public static Action AutomaticTickButtonPressed;
+
+    public static Action OnPreTick;
+
+
+
+
+
 
 
 }

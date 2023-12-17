@@ -28,19 +28,20 @@ public class MovementCompiler
             {
                 break;
             }
+            Debug.Log("executed movement " + movement.startTile + " to " + movement.endTile);
             SetTilesForEntity(movement);
 
-            if (movement.entity.GetCollisionController().IsCollidable())
-            {
-                List<Entity> collidableEntities = movement.entity.GetCollisionController()
-                    .GetCollidableEntitiesWithinCollisonRadius(movement.entity.GetCurrentTile());
-                foreach (var receiver in collidableEntities)
-                {
-                    DeleteAllMovementsForEntity(i, movement.entity);
-                    Collision collision = new Collision(movement.entity, receiver, movement);
-                    EventManager.OnCollision(collision);
-                }
-            }
+            // if (movement.entity.GetCollisionController().IsCollidable())
+            // {
+                // List<Entity> collidableEntities = movement.entity.GetCollisionController()
+                    // .GetCollidableEntitiesWithinCollisonRadius(movement.entity.GetCurrentTile());
+                // foreach (var receiver in collidableEntities)
+                // {
+                    // DeleteAllMovementsForEntity(i, movement.entity);
+                    // Collision collision = new Collision(movement.entity, receiver, movement);
+                    // EventManager.OnCollision(collision);
+                // }
+            // }
         }
         currentMovements.Clear();
     }

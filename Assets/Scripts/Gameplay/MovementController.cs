@@ -30,17 +30,19 @@ public class MovementController : MonoBehaviour
     {
         int change = Math.Sign(columnMovement);
         columnMovement = Math.Abs(columnMovement);
+        Tile endTile = null;
         for (int i = 0; i < columnMovement; i++)
         {
-            Debug.Log(_currentMovement.startTile.row);
-            Tile endTile = TileController.Instance.GetTile(_currentMovement.startTile.row,
+            endTile = TileController.Instance.GetTile(_currentMovement.startTile.row,
                 _currentMovement.startTile.col + change);
             SetCurrentMovement(new Movement(_currentMovement.startTile, endTile, _currentMovement.entity));
        
-            DisplaceToAnotherTile(endTile);
             EventManager.OnMovement(_currentMovement);
+            
+            SetCurrentMovement(new Movement(endTile, null, _currentMovement.entity));
 
         }
+            DisplaceToAnotherTile(endTile);
     }
     public void DisplaceFromCurrentTileVertically(int rowMovement)
     {

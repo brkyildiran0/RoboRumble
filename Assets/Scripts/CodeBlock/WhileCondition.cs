@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class WhileCondition : Execute
 {
-    [SerializeField] private bool isTrue;
+
+    public Condition condition;
 
     public override void ExecuteContent()
     {
-        if (isTrue)
+        if (condition.IsTrue(entity))
         {
-            transform.GetChild(0).GetComponent<Execute>().SubsribeToTick();
-            Debug.Log("True");
+            var execute = transform.GetChild(0).GetComponent<Execute>();
+            if (execute)
+            {
+                execute.SubsribeToTick();
+            }
+            else
+            {
+                return;
+            }
         }
         else
         {
@@ -24,7 +32,7 @@ public class WhileCondition : Execute
 
     public override void ChildExecutionComplete(int childOrder)
     {
-        if (childOrder < transform.childCount - 2)
+        if (childOrder < transform.childCount - 3)
         {
             transform.GetChild(childOrder + 1).GetComponent<Execute>().SubsribeToTick();
         }

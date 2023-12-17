@@ -57,6 +57,7 @@ public class Condition : MonoBehaviour
             case ("y pos"):
                 return entity.GetValue(text); 
             default:
+                Debug.Log(transform.parent.name);
                 return int.Parse(text);
         }
             
