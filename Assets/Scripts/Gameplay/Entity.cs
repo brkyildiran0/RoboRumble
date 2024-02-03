@@ -5,12 +5,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Entity : MonoBehaviour
 {
     private Tile currentTile;
     private MovementController movementController;
     private CollisionController collisionController;
+    private bool isSelected;
     
 
     private void Awake()
@@ -18,11 +20,31 @@ public class Entity : MonoBehaviour
         movementController = GetComponent<MovementController>();
         collisionController = GetComponent<CollisionController>();
         movementController.SetCurrentMovement(new Movement(null, null, this));
+        isSelected = false;
     }
 
     public Tile GetCurrentTile()
     {
         return currentTile;
+    }
+
+    public bool getSelected()
+    {
+        return isSelected;
+    }
+
+    public void setSelected(bool selected)
+    {
+        if (selected == true)
+        {
+            gameObject.GetComponent<Image>().enabled = false;
+            gameObject.transform.GetChild(0).GetComponent<Image>().enabled = true;
+        } else
+        {
+            gameObject.GetComponent<Image>().enabled = true;
+            gameObject.transform.GetChild(0).GetComponent<Image>().enabled = false;
+        }
+        isSelected = selected;
     }
 
     public void SetCurrentTile(Tile tile)
