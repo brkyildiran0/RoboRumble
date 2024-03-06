@@ -20,10 +20,6 @@ public static class EventManager
     public static Action OnGameOverSuccess;
     public static Action OnGameOverFailure;
 
-
-
-
-
-
+    public static Action<string> OnObjectiveCompleted;
 
 }
