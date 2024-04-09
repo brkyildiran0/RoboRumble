@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public int maxHealth = 100;
+    public int maxHealth = 5;
     public int currentHealth;
 
-    public Slider healthBar; // Assign your health bar Slider in the inspector
+    public Slider healthBar;
 
     private void Start()
     {
@@ -17,9 +17,9 @@ public class Health : MonoBehaviour
         healthBar.value = currentHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage()
     {
-        currentHealth -= damage;
+        currentHealth -= -1;
 
         // Ensure health doesn't go below zero
         if (currentHealth < 0) 
@@ -32,5 +32,8 @@ public class Health : MonoBehaviour
         {
             // Add game over or death logic here
         }
+        
+        
     }
+
 }
