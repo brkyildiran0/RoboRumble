@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CodeController : MonoBehaviour
 {
+    public static CodeController Instance;
     //[SerializeField] private List<Execute> startingBlocks;
     public List<GameObject> startingBlocks;
     //[SerializeField] private List<Entity> startingEntities;
@@ -23,13 +24,11 @@ public class CodeController : MonoBehaviour
     
     private void Awake()
     {
+        Instance = this;
         EventManager.OnTilesCreated += SetTileEntities;
 
-        EventManager.OnPreTick += SetEntities;
-        //EventManager.OnPreTick += SetEntities;
+        SetEntities();
 
-        EventManager.OnTick += CheckOnRoute;
-        
         for (int i = 0; i < startingBlocks.Count; i++)
         {
             startingBlocks[i].GetComponent<Execute>().SubsribeToTick();
@@ -89,6 +88,19 @@ public class CodeController : MonoBehaviour
         currentState = !currentState;
 
         ObjectOne.SetActive(currentState);*/
+    }
+
+    public Entity GetSelectedEntity()
+    {
+        foreach (var entity in startingEntities)
+        {
+            if (entity.GetComponent<Entity>().getSelected())
+            {
+                return entity.GetComponent<Entity>();
+            }
+        }
+
+        return startingEntities[0].GetComponent<Entity>();
     }
 
     private void CheckOnRoute()

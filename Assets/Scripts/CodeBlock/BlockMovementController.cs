@@ -11,6 +11,7 @@ using Object = UnityEngine.Object;
 public class BlockMovementController : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandler, IPointerEnterHandler, IEndDragHandler
 {
     private RectTransform _rectTransform;
+    public Execute execute;
 
     private Vector3 _dragStartMousePosition;
 
@@ -31,6 +32,7 @@ public class BlockMovementController : MonoBehaviour, IBeginDragHandler, IDragHa
 
     private void Awake()
     {
+        execute = GetComponent<Execute>();
         _rectTransform = GetComponent<RectTransform>();
         _currentMinTransform = _rectTransform;
     }
@@ -41,6 +43,8 @@ public class BlockMovementController : MonoBehaviour, IBeginDragHandler, IDragHa
         {
             return;
         }
+        
+        execute.SetEntity(CodeController.Instance.GetSelectedEntity());
         
         _dragStartMousePosition = Input.mousePosition;
         _dragStartBlockPosition = transform.position;

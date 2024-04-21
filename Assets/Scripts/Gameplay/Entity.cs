@@ -12,7 +12,7 @@ public class Entity : MonoBehaviour
     private Tile currentTile;
     private MovementController movementController;
     private CollisionController collisionController;
-    private bool isSelected;
+    public bool isSelected;
     
 
     private void Awake()

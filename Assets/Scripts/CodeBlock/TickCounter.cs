@@ -35,8 +35,8 @@ public class TickCounter : MonoBehaviour
     {
         while (isAutomatic)
         {
-            yield return new WaitForSeconds(tickInterval / 2);
-            EventManager.OnPreTick();
+            // yield return new WaitForSeconds(tickInterval / 2);
+            // EventManager.OnPreTick();
             yield return new WaitForSeconds(tickInterval / 2);
             EventManager.OnTick();
         }
