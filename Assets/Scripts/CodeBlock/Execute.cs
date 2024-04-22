@@ -68,6 +68,15 @@ public abstract class Execute : MonoBehaviour
         }
     }
 
+    public Entity GetEntity()
+    {
+        if (entity != null)
+        {
+            return entity;
+        }
+        return null;
+    }
+
     public Execute GetNextExecutor(int currentSiblingIndex)
     {
         for (int i = currentSiblingIndex; i < transform.childCount; i++)

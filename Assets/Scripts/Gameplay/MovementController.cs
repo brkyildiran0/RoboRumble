@@ -43,7 +43,6 @@ public class MovementController : MonoBehaviour
             SetCurrentMovement(new Movement(endTile, null, _currentMovement.entity));
 
         }
-            DisplaceToAnotherTile(endTile);
     }
     public void DisplaceFromCurrentTileVertically(int rowMovement)
     {
@@ -56,13 +55,13 @@ public class MovementController : MonoBehaviour
             endTile = TileController.Instance.GetTile(_currentMovement.startTile.row + change,
                 _currentMovement.startTile.col);
             SetCurrentMovement(new Movement(_currentMovement.startTile, endTile, _currentMovement.entity));
-       
+      
+            Debug.Log("endtile: " + endTile);
             EventManager.OnMovement(_currentMovement);
             
             SetCurrentMovement(new Movement(endTile, null, _currentMovement.entity));
 
         }
-            DisplaceToAnotherTile(endTile);
     }
 
 

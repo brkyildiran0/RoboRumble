@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Gameplay;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class MovementCompiler
 {
@@ -28,6 +30,15 @@ public class MovementCompiler
             {
                 break;
             }
+          
+            if (TileMapController.Instance.IsTileWall(movement.endTile))
+            {
+                DeleteAllMovementsForEntity(i, movement.entity);
+                break;
+            }
+            
+            movement.entity.GetMovementController().DisplaceToAnotherTile(movement.endTile);
+            
             Debug.Log("executed movement " + movement.startTile + " to " + movement.endTile);
             SetTilesForEntity(movement);
 

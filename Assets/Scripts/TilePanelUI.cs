@@ -12,7 +12,7 @@ public class TilePanelUI : MonoBehaviour
 
     private RectTransform rectTransform;
     private float rectWidth, rectHeight;
-    private float rowTileDimension, columnTileDimension;
+    private float sizeWidth, sizeHeight;
 
     public static TilePanelUI Instance;
     
@@ -41,8 +41,8 @@ public class TilePanelUI : MonoBehaviour
 
     public void CalculateTileAmounts()
     {
-        rowTileDimension = rectWidth / TileController.Instance.rowCount;
-        columnTileDimension = rectHeight / TileController.Instance.columnCount;
+        sizeWidth = rectWidth / TileController.Instance.columnCount;
+        sizeHeight = rectHeight / TileController.Instance.rowCount;
     }
 
     public void DrawUITiles()
@@ -56,30 +56,30 @@ public class TilePanelUI : MonoBehaviour
                 var tile = TileManagerTransformHierarchy.GetChild(i * TileController.Instance.columnCount + j);
                 var tileRectTransform = tile.AddComponent<RectTransform>();
 
-                float posX = (rowTileDimension * j) - (rectWidth / 2) + (rowTileDimension / 2);
-                float posY = (columnTileDimension * i) - (rectHeight / 2) + (columnTileDimension / 2);
+                float posX = (sizeWidth * j) - (rectWidth / 2) + (sizeWidth / 2);
+                float posY = (sizeHeight * i) - (rectHeight / 2) + (sizeHeight / 2);
                 tileRectTransform.anchoredPosition = new Vector2(posX, posY);
-                tileRectTransform.sizeDelta = new Vector2(rowTileDimension, columnTileDimension);
+                tileRectTransform.sizeDelta = new Vector2(sizeWidth, sizeHeight);
 
-                var tileImage = tileRectTransform.AddComponent<Image>();
+                // var tileImage = tileRectTransform.AddComponent<Image>();
 
-                Vector2 currentTile = new Vector2(i, j);
-                if (coloredTiles.Contains(currentTile))
-                {
-                    if (coloredTiles[coloredTiles.Count - 1] == currentTile)
-                    {
-                        tileImage.color = new Color(0, 120, 0);
-                    }
-                    else
-                    {
-                        tileImage.color = Color.white;
-                    }
-                }
-                else
-                {
-                    tileImage.color = new Color(softRed.r, softRed.g, softRed.b, softRed.a);
-                }
-                tileImage.sprite = tileSprite;
+                // Vector2 currentTile = new Vector2(i, j);
+                // if (coloredTiles.Contains(currentTile))
+                // {
+                    // if (coloredTiles[coloredTiles.Count - 1] == currentTile)
+                    // {
+                        // tileImage.color = new Color(0, 120, 0);
+                    // }
+                    // else
+                    // {
+                        // tileImage.color = Color.white;
+                    // }
+                // }
+                // else
+                // {
+                    // tileImage.color = new Color(softRed.r, softRed.g, softRed.b, softRed.a);
+                // }
+                // tileImage.sprite = tileSprite;
             }
         }
     }
