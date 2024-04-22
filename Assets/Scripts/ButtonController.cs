@@ -36,6 +36,7 @@ public class ButtonController: MonoBehaviour
             automatictickButton.GetComponent<Image>().color = Color.white;
         }
         EventManager.AutomaticTickButtonPressed();
+        AudioManager.Instance.PlaySFX("ButtonClick");
     }
 
     private void OnManualButtonClicked()
