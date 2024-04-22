@@ -111,6 +111,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: If Bigger Conditional Statement
       objectReference: {fileID: 0}
+    - target: {fileID: 1179630458640500819, guid: 16d0466078b89a04399d365b6ac424e5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3441261405098087774, guid: 16d0466078b89a04399d365b6ac424e5, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 97
