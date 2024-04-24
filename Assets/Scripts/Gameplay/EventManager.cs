@@ -21,5 +21,7 @@ public static class EventManager
     public static Action OnGameOverFailure;
 
     public static Action<string> OnObjectiveCompleted;
+    
+    public static Action OnRaycast;
 
 }
