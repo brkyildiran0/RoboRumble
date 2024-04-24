@@ -10,7 +10,6 @@ public class DropObject : MonoBehaviour, IDropHandler
     
     public void OnDrop(PointerEventData eventData)
     {
-        
         EventSystem.current.currentSelectedGameObject.transform.parent = transform;
         var sizey = GetComponent<RectTransform>().rect.size.y;
         int index = (int)((((transform.position.y+(sizey/2)) - Input.mousePosition.y))/35)+1;

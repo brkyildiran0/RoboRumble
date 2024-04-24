@@ -28,6 +28,7 @@ public class MovementController : MonoBehaviour
 
     public void DisplaceFromCurrentTileHorizontally(int columnMovement)
     {
+        AudioManager.Instance.PlaySFX("PlayerMove");
         int change = Math.Sign(columnMovement);
         columnMovement = Math.Abs(columnMovement);
         Tile endTile = null;
@@ -46,6 +47,7 @@ public class MovementController : MonoBehaviour
     }
     public void DisplaceFromCurrentTileVertically(int rowMovement)
     {
+        AudioManager.Instance.PlaySFX("PlayerMove");
         int change = Math.Sign(rowMovement);
         rowMovement = Math.Abs(rowMovement);
         Tile endTile = null;
