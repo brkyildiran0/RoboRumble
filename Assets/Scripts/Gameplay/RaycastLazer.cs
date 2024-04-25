@@ -26,7 +26,7 @@ namespace Gameplay
     
         void ShootLazer()
         {
-            RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.up, 0.01f);
+            RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.up, 1000f);
             Debug.DrawRay(firePoint.position, firePoint.up * 100, Color.red, 0.1f);
             if (hitInfo)
             {
