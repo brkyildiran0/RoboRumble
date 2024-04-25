@@ -66,6 +66,7 @@ public class CodeController : MonoBehaviour
         for (int i = 0; i < startingBlocks.Count; i++)
         {
             startingBlocks[i].GetComponent<Execute>().SetEntity(startingEntities[i].GetComponent<Entity>());
+            if (i == 0) { startingEntities[i].GetComponent<Entity>().setSelected(true);}
         }
 
         /*for (int i = 0; i < startingBlocks.Count; i++)

@@ -36,6 +36,7 @@ public class EventClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
         ObjectOne.SetActive(currentState);*/
 
+
         int activeEntity = 0;
         for (int i = 0; i < s.startingBlocks.Count; i++)
         {
@@ -51,6 +52,7 @@ public class EventClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
         if (currentState == false)
         {
+            AudioManager.Instance.PlaySFX("EntityClick");
             currentState = !currentState;
         }
 
@@ -104,6 +106,7 @@ public class EventClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
                 if (s.startingEntities[i].GetComponent<Entity>() == gameObject.GetComponent<Entity>())
                 {
                     s.startingEntities[i].GetComponent<Image>().enabled = false;
+                    AudioManager.Instance.PlaySFX("EntitySelect");
                     s.startingEntities[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
                 }
             }
