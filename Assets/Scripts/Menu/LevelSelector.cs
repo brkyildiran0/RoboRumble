@@ -17,6 +17,7 @@ public class LevelSelector : MonoBehaviour
     }
 
     public void OpenScene(){
+        AudioManager.Instance.PlaySFX("ButtonAt");
         SceneManager.LoadScene("Level "+level.ToString());
     }
 }

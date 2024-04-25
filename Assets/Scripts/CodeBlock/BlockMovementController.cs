@@ -45,7 +45,9 @@ public class BlockMovementController : MonoBehaviour, IBeginDragHandler, IDragHa
         }
         
         execute.SetEntity(CodeController.Instance.GetSelectedEntity());
-        
+
+        AudioManager.Instance.PlaySFX("ButtonAt");
+
         _dragStartMousePosition = Input.mousePosition;
         _dragStartBlockPosition = transform.position;
         SetIsDraggedRecursive(true);
@@ -206,6 +208,7 @@ public class BlockMovementController : MonoBehaviour, IBeginDragHandler, IDragHa
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        AudioManager.Instance.PlaySFX("ButtonAt");
         SetIsDraggedRecursive(false);
     }
     
@@ -215,6 +218,7 @@ public class BlockMovementController : MonoBehaviour, IBeginDragHandler, IDragHa
     {
         return;
         Debug.Log("on dropped activated for " + name + " , dropped object is " + eventData.pointerDrag.name);
+
 
         BlockMovementController _droppedController = eventData.pointerDrag.GetComponent<BlockMovementController>();
         Image droppedImage = _droppedController.GetComponent<Image>();
