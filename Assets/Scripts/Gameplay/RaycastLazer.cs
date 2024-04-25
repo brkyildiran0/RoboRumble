@@ -64,7 +64,7 @@ namespace Gameplay
             else
             {
                 lineRenderer.SetPosition(0, firePoint.position);
-                lineRenderer.SetPosition(1,  firePoint.position + firePoint.up * 5f);
+                lineRenderer.SetPosition(1,  firePoint.position + firePoint.up * 20f);
                 EnableLazer();
                 Invoke("DisableLazer", 0.06f);
             }
