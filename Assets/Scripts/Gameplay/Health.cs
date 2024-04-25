@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public int maxHealth = 5;
+    public int maxHealth = 12;
     public int currentHealth;
 
     public Slider healthBar;
@@ -19,7 +19,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage()
     {
-        currentHealth -= -1;
+        currentHealth -= 1;
 
         // Ensure health doesn't go below zero
         if (currentHealth < 0) 
@@ -28,9 +28,9 @@ public class Health : MonoBehaviour
         }
 
         healthBar.value = currentHealth;
-        if (currentHealth <= 0)
+        if (currentHealth == 0)
         {
-            // Add game over or death logic here
+            gameObject.transform.parent.gameObject.SetActive(false);
         }
         
         

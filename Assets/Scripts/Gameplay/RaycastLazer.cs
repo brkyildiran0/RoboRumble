@@ -7,10 +7,14 @@ namespace Gameplay
     public class RaycastLazer : MonoBehaviour
     {
         public Transform firePoint;
+        public LineRenderer lineRenderer;
+        public Transform itself;
 
         private void Start()
         {
             EventManager.OnRaycast += ShootLazer;
+            DisableLazer();
+            itself = transform;
         }
 
         private void OnEnable()
@@ -30,8 +34,50 @@ namespace Gameplay
             Debug.DrawRay(firePoint.position, firePoint.up * 100, Color.red, 0.1f);
             if (hitInfo)
             {
-                Debug.Log("name" + hitInfo.transform.name);
+                Transform obje = hitInfo.transform;
+                if (obje != null)
+                {
+                    Vector3 temp = obje.position;
+                    Vector3 pos = firePoint.position;
+                    if(itself.rotation.eulerAngles.z % 180 == 0)
+                    {
+                        temp.x = pos.x;
+                    }
+                    else
+                    {
+                        temp.y = pos.y;
+                    }
+                    lineRenderer.SetPosition(0, pos);
+                    lineRenderer.SetPosition(1, temp);
+                    EnableLazer();
+                    Invoke("DisableLazer", 0.06f);
+                    Debug.Log("parent " + obje.name);
+                    Transform health = hitInfo.transform.GetChild(1);
+                    if (health != null)
+                    {
+                        Health healthScript = health.GetComponent<Health>();
+                        healthScript.TakeDamage();
+                    }
+                }
+                
             }
+            else
+            {
+                lineRenderer.SetPosition(0, firePoint.position);
+                lineRenderer.SetPosition(1,  firePoint.position + firePoint.up * 5f);
+                EnableLazer();
+                Invoke("DisableLazer", 0.06f);
+            }
+        }
+        
+        void DisableLazer()
+        {
+            lineRenderer.enabled = false;
+        }
+        
+        void EnableLazer()
+        {
+            lineRenderer.enabled = true;
         }
     }
 }
