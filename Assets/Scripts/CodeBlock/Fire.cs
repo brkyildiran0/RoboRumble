@@ -1,18 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fire : MonoBehaviour
+public class Fire : Execute
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //this script should fire the event to fire which raycastlazer will listen to
 
-    // Update is called once per frame
-    void Update()
+    public override void ExecuteContent()
     {
-        
+        EventManager.OnRaycast?.Invoke();
+        base.ExecuteContent();
     }
 }

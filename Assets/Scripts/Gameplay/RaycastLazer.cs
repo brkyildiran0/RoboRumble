@@ -1,40 +1,33 @@
+using System;
 using UnityEngine;
 
 namespace Gameplay
 {
+    //this script should listen to the event fired by fire
     public class RaycastLazer : MonoBehaviour
     {
-
         public Transform firePoint;
-        void Update()
+
+        private void Start()
         {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                ShootLazer();
-            }
-        
+            EventManager.OnRaycast += ShootLazer;
         }
+
+        private void OnEnable()
+        {
+            EventManager.OnRaycast += ShootLazer;
+        }
+        
+        private void OnDisable()
+        {
+            EventManager.OnRaycast -= ShootLazer;
+        }
+        
     
         void ShootLazer()
         {
             RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.up, 0.01f);
-            Debug.DrawRay(firePoint.position, firePoint.up * 100, Color.red, 1f);
-            // Create a LineRenderer component if it doesn't exist
-            LineRenderer lineRenderer = GetComponent<LineRenderer>();
-            if (lineRenderer == null)
-            {
-                lineRenderer = gameObject.AddComponent<LineRenderer>();
-            }
-            Debug.Log(hitInfo.point);
-            // Set the properties of the LineRenderer
-            lineRenderer.positionCount = 2;
-            lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, hitInfo.point);
-            lineRenderer.startColor = Color.black;
-            lineRenderer.endColor = Color.black;
-            lineRenderer.startWidth = 0.1f;
-            lineRenderer.endWidth = 0.1f;
-
+            Debug.DrawRay(firePoint.position, firePoint.up * 100, Color.red, 0.1f);
             if (hitInfo)
             {
                 Debug.Log("name" + hitInfo.transform.name);
