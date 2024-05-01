@@ -22,6 +22,7 @@ public static class EventManager
 
     public static Action<string> OnObjectiveCompleted;
     
-    public static Action OnRaycast;
+    //fire the onraycast event with entity information
+    public static Action<Entity> OnRaycast;
 
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Gameplay
 {
     //this script should listen to the event fired by fire
-    public class RaycastLazer : MonoBehaviour
+    public class RaycastLazer : Execute
     {
         public Transform firePoint;
         public LineRenderer lineRenderer;
@@ -12,10 +12,9 @@ namespace Gameplay
 
         private void Start()
         {
-            EventManager.OnRaycast += ShootLazer;
-            DisableLazer();
             itself = transform;
         }
+        
 
         private void OnEnable()
         {
@@ -28,7 +27,15 @@ namespace Gameplay
         }
         
     
-        void ShootLazer()
+        void ShootLazer(Entity entity)
+        {
+            if (entity == this.entity)
+            {
+                Shoot();
+            }
+        }
+
+        private void Shoot()
         {
             RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.up, 1000f);
             Debug.DrawRay(firePoint.position, firePoint.up * 100, Color.red, 0.1f);

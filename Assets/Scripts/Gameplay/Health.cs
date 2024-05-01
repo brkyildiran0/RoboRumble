@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Gameplay;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public int maxHealth = 12;
+    public int maxHealth = 0;
     public int currentHealth;
 
     public Slider healthBar;
 
     private void Start()
     {
+        //max healt will be max value of the slider component
+        maxHealth = (int)healthBar.maxValue;
         currentHealth = maxHealth;
         healthBar.maxValue = maxHealth;
         healthBar.value = currentHealth;
@@ -31,6 +34,7 @@ public class Health : MonoBehaviour
         if (currentHealth == 0)
         {
             gameObject.transform.parent.gameObject.SetActive(false);
+            gameObject.transform.parent.gameObject.GetComponent<RaycastLazer>().enabled = false;
         }
         
         
