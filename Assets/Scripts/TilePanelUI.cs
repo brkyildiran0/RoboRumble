@@ -61,25 +61,9 @@ public class TilePanelUI : MonoBehaviour
                 tileRectTransform.anchoredPosition = new Vector2(posX, posY);
                 tileRectTransform.sizeDelta = new Vector2(sizeWidth, sizeHeight);
 
-                // var tileImage = tileRectTransform.AddComponent<Image>();
+                var tileImage = tileRectTransform.AddComponent<Image>();
 
-                // Vector2 currentTile = new Vector2(i, j);
-                // if (coloredTiles.Contains(currentTile))
-                // {
-                    // if (coloredTiles[coloredTiles.Count - 1] == currentTile)
-                    // {
-                        // tileImage.color = new Color(0, 120, 0);
-                    // }
-                    // else
-                    // {
-                        // tileImage.color = Color.white;
-                    // }
-                // }
-                // else
-                // {
-                    // tileImage.color = new Color(softRed.r, softRed.g, softRed.b, softRed.a);
-                // }
-                // tileImage.sprite = tileSprite;
+                tileImage.sprite = tileSprite;
             }
         }
     }

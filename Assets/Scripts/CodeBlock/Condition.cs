@@ -57,19 +57,15 @@ public class Condition : MonoBehaviour
 
     private int ParseInteger(string text)
     {
-        int result = 0;
-        if (text.Length <= 1)
+        string stripped = "";
+        foreach (var character in text)
         {
-            return result;
+            if (char.IsDigit(character))
+            {
+                stripped += character;
+            }
         }
-
-        bool parsed = int.TryParse(text, out result);
-        if (!parsed)
-        {
-            text = text.Substring(0, 1);
-            int.TryParse(text, out result);
-        }
-        return result;
+        return int.Parse(stripped);
     }
 
     private string ParseText(string text)

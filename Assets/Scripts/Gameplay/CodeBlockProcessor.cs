@@ -16,7 +16,6 @@ public class CodeBlockProcessor: MonoBehaviour
         EventManager.OnTick += ProcessOneCycle;
         movementCompiler = new MovementCompiler();
         collisionCompiler = new CollisionCompiler();
-
     }
 
     private void OnDestroy()
