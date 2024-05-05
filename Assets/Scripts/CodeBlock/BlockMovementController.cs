@@ -2,7 +2,10 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
@@ -11,6 +14,8 @@ using Object = UnityEngine.Object;
 public class BlockMovementController : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandler, IPointerEnterHandler, IEndDragHandler
 {
     private RectTransform _rectTransform;
+    public LayerMask layerMask;
+    Collider2D _collider;
     public Execute execute;
 
     private Vector3 _dragStartMousePosition;
@@ -32,6 +37,7 @@ public class BlockMovementController : MonoBehaviour, IBeginDragHandler, IDragHa
 
     private void Awake()
     {
+        _collider = GetComponent<Collider2D>();
         execute = GetComponent<Execute>();
         _rectTransform = GetComponent<RectTransform>();
         _currentMinTransform = _rectTransform;
@@ -43,16 +49,21 @@ public class BlockMovementController : MonoBehaviour, IBeginDragHandler, IDragHa
         {
             return;
         }
-        
+
         execute.SetEntity(CodeController.Instance.GetSelectedEntity());
 
         AudioManager.Instance.PlaySFX("ButtonAt");
 
+        Debug.Log("begin drag for " + name);
         _dragStartMousePosition = Input.mousePosition;
         _dragStartBlockPosition = transform.position;
         SetIsDraggedRecursive(true);
         // GetComponent<Image>().raycastTarget = false;
+
+        // var newCollider = transform.AddComponent<BoxCollider2D>();
+        // _collider = newCollider;
     }
+    
 
     private void GetClosestTransformToPoint(Vector2 point)
     {
@@ -135,27 +146,39 @@ public class BlockMovementController : MonoBehaviour, IBeginDragHandler, IDragHa
     
     public void OnDrag(PointerEventData eventData)
     {
+        
+        EditorUtility.SetDirty(gameObject);
+        
+        Debug.Log("drag for " +name);
         Vector2 pos;
         _rectTransform.position = _dragStartBlockPosition + Input.mousePosition - _dragStartMousePosition;
 
-        var results = new List<RaycastResult>();
-        // EventSystem.current.RaycastAll(eventData, results);
         float insideThreshold = 20;
 
-        RaycastHit2D[] hit = Physics2D.RaycastAll(Input.mousePosition, Input.mousePosition);
 
         float overlapHalfEdge = insideThreshold;
         Vector2 topLeftPointOffset = new Vector2(-overlapHalfEdge, overlapHalfEdge);
         Vector2 bottomRightPointoffset = new Vector2(overlapHalfEdge, -overlapHalfEdge);
         Vector2 mousePos = Input.mousePosition;
-        Collider2D[] collidedObjects = Physics2D.OverlapAreaAll(mousePos + topLeftPointOffset,
-            mousePos + bottomRightPointoffset);
+        List<Collider2D> collidedObjects = new List<Collider2D>();
+        
+        // var count = Physics2D.OverlapArea(mousePos + topLeftPointOffset, mousePos + bottomRightPointoffset,
+            // results);s
+            var contactFilter = new ContactFilter2D().NoFilter();
+            
+        var count = Physics2D.OverlapArea(mousePos + topLeftPointOffset, mousePos + bottomRightPointoffset,contactFilter, collidedObjects);
+        Debug.Log("Mouse pos" + mousePos);
+        Debug.Log("pos: " + mousePos + " , top left: " + mousePos + topLeftPointOffset + " , bottom right: " + mousePos + bottomRightPointoffset);
+        // Collider2D[] collidedObjects = Physics2D.OverlapAreaAll(mousePos + topLeftPointOffset,
+            // mousePos + bottomRightPointoffset);
+        
+        Debug.Log("collided objects: " + count);
 
 
         float minDifference = float.MaxValue;
         float yDifference = 0;
         float sign = 1;
-        for (int i = 0; i < collidedObjects.Length; i++)
+        for (int i = 0; i < count; i++)
         {
             Transform raycastTransform = collidedObjects[i].transform;
             if (raycastTransform.GetComponent<BlockMovementController>() && raycastTransform != transform)
@@ -208,6 +231,8 @@ public class BlockMovementController : MonoBehaviour, IBeginDragHandler, IDragHa
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        _collider.isTrigger = !_collider.isTrigger;
+        EditorUtility.SetDirty(_collider);
         AudioManager.Instance.PlaySFX("ButtonAt");
         SetIsDraggedRecursive(false);
     }

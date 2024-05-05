@@ -39,6 +39,12 @@ public class BlockOrderController : MonoBehaviour
     private int Order( RectTransform transformToOrder, int _currentXIncrement, int _currentYIncrement)
     {
         BlockMovementController controllerToOrder = transformToOrder.GetComponent<BlockMovementController>();
+        if (transformToOrder.GetComponent<BoxCollider2D>())
+        {
+            var collider = transformToOrder.GetComponent<BoxCollider2D>();
+            // collider.isTrigger = true;
+        }
+
 
         if (!controllerToOrder)
         {

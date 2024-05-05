@@ -846,8 +846,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b93a321a9649a44b81b6799e9064e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftOperand: {fileID: 1905593063547787831}
-  middleOperator: {fileID: 7165773531040995357}
+  leftOperand: 0
+  middleOperator: 0
   rightOperand: {fileID: 7752409770227441409}
 --- !u!1 &8600982835421067499
 GameObject:
@@ -938,6 +938,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a51e02d4ee434d8a28b18965422e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  execute: {fileID: 0}
   isBeingDragged: 0
   isEndOfStatement: 1
   cam: {fileID: 919395056216382057, guid: 32322b25300ee884abb38d4e07d0f7ea, type: 3}
@@ -1035,6 +1039,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a51e02d4ee434d8a28b18965422e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 32
+  execute: {fileID: 0}
   isBeingDragged: 0
   isEndOfStatement: 0
   cam: {fileID: 919395056216382057, guid: 32322b25300ee884abb38d4e07d0f7ea, type: 3}

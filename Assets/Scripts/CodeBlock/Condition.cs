@@ -10,6 +10,8 @@ public class Condition : MonoBehaviour
     public SymbolType middleOperator;
     public TextMeshProUGUI rightOperand;
 
+    private int _counter = 0;
+
     public enum SymbolType
     {
         SmallerThan,
@@ -17,7 +19,6 @@ public class Condition : MonoBehaviour
         Equals,
         xPos,
         yPos,
-        Number
     }
 
     public bool IsTrue(Entity entity)
@@ -25,30 +26,41 @@ public class Condition : MonoBehaviour
         switch (middleOperator)
         {
             case (SymbolType.Equals):
-                return InterpretOperand(entity, leftOperand) == InterpretOperand(entity, SymbolType.Number);
+                return InterpretEntityOperand(entity, leftOperand) == ParseInteger(rightOperand.text);
             case (SymbolType.BiggerThan):
-                return InterpretOperand(entity, leftOperand) > InterpretOperand(entity, SymbolType.Number);
+                return InterpretEntityOperand(entity, leftOperand) > ParseInteger(rightOperand.text);
             case (SymbolType.SmallerThan):
-                
-                return InterpretOperand(entity, leftOperand) < InterpretOperand(entity, SymbolType.Number);
+                return InterpretEntityOperand(entity, leftOperand) < ParseInteger(rightOperand.text);
             default:
                 return false;
         }
-        
     }
 
-    private int InterpretOperand(Entity entity, SymbolType symbolType)
+    public bool IsCounterFinished()
+    {
+        var isFinished = false;
+        isFinished = _counter == ParseInteger(rightOperand.text) - 1;
+
+        if (isFinished)
+        {
+            _counter = 0;
+        }
+        else
+        {
+            _counter += 1;
+        }
+
+        return isFinished;
+    }
+
+    private int InterpretEntityOperand(Entity entity, SymbolType symbolType)
     {
         switch (symbolType)
         {
             case (SymbolType.xPos):
-                
-                Debug.Log("returned from entity: " + entity.GetValue(symbolType));
                 return entity.GetValue(symbolType);
             case (SymbolType.yPos):
                 return entity.GetValue(symbolType);
-            case (SymbolType.Number):
-                return ParseInteger(rightOperand.text); 
             default:
                 return 0;
         }
