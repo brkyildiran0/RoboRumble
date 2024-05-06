@@ -39,7 +39,7 @@ public class Condition : MonoBehaviour
     public bool IsCounterFinished()
     {
         var isFinished = false;
-        isFinished = _counter == ParseInteger(rightOperand.text) - 1;
+        isFinished = _counter == ParseInteger(rightOperand.text);
 
         if (isFinished)
         {
