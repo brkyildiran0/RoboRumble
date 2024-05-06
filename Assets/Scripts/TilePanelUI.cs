@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Gameplay;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -64,6 +65,11 @@ public class TilePanelUI : MonoBehaviour
                 var tileImage = tileRectTransform.AddComponent<Image>();
 
                 tileImage.sprite = tileSprite;
+
+                /*if (TileMapController.Instance.IsTileWall(TileController.Instance.GetTile(i, j))) ;
+                {
+                    tileRectTransform.AddComponent<BoxCollider2D>();
+                }*/
             }
         }
     }

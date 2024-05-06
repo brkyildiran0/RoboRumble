@@ -24,5 +24,6 @@ public static class EventManager
     
     //fire the onraycast event with entity information
     public static Action<Entity> OnRaycast;
+    public static Action<Entity,int> RotateEntity;
 
 }

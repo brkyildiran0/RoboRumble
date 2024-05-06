@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Gameplay
 {
     //this script should listen to the event fired by fire
-    public class RaycastLazer : Execute
+    public class RaycastLazerTurret : Execute
     {
         public Transform firePoint;
         public LineRenderer lineRenderer;
@@ -48,14 +48,6 @@ namespace Gameplay
                 {
                     Vector3 temp = obje.position;
                     Vector3 pos = firePoint.position;
-                    if(itself.rotation.eulerAngles.z % 180 == 0)
-                    {
-                        temp.x = pos.x;
-                    }
-                    else
-                    {
-                        temp.y = pos.y;
-                    }
                     lineRenderer.SetPosition(0, pos);
                     lineRenderer.SetPosition(1, temp);
                     EnableLazer();
