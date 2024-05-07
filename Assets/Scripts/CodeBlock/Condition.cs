@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Condition : MonoBehaviour
 {
+    public bool alwaysTrue;
     public SymbolType leftOperand;
     public SymbolType middleOperator;
     public TextMeshProUGUI rightOperand;
@@ -23,6 +24,11 @@ public class Condition : MonoBehaviour
 
     public bool IsTrue(Entity entity)
     {
+        if (alwaysTrue)
+        {
+            return true;
+        }
+        
         switch (middleOperator)
         {
             case (SymbolType.Equals):

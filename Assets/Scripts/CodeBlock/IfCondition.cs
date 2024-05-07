@@ -6,9 +6,20 @@ using UnityEngine;
 
 public class IfCondition : Execute
 {
-
+    public bool hasElse;
+    public IfCondition elseCondition;
     public Condition condition;
 
+
+    public override void Awake()
+    {
+        base.Awake();
+        if (hasElse)
+        {
+            elseCondition.gameObject.SetActive(hasElse);
+        }
+    }
+    
     public override void ExecuteContent()
     {
         if (condition.IsTrue(entity))
@@ -26,7 +37,14 @@ public class IfCondition : Execute
         }
         else
         {
-            NotifyParent();
+            if (hasElse)
+            {
+                elseCondition.SubsribeToTick();
+            }
+            else
+            {
+                NotifyParent();
+            }
         }
 
         UnSubscribeToTick();
@@ -34,7 +52,7 @@ public class IfCondition : Execute
 
     public override void ChildExecutionComplete(int childOrder)
     {
-        if (childOrder < transform.childCount - 3)
+        if (childOrder < transform.childCount - 4)
         {
             transform.GetChild(childOrder + 1).GetComponent<Execute>().SubsribeToTick();
         }
