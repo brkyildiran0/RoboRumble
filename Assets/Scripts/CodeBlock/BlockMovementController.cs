@@ -25,6 +25,8 @@ public class BlockMovementController : MonoBehaviour, IBeginDragHandler, IDragHa
     public bool isBeingDragged = false;
 
     public bool isEndOfStatement = false;
+    
+    public bool isMovable = true;
 
     public Camera cam;
 
@@ -146,6 +148,10 @@ public class BlockMovementController : MonoBehaviour, IBeginDragHandler, IDragHa
     
     public void OnDrag(PointerEventData eventData)
     {
+        if (!isMovable)
+        {
+            return;
+        }
         
         EditorUtility.SetDirty(gameObject);
         

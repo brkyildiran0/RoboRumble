@@ -861,6 +861,7 @@ GameObject:
   - component: {fileID: 532079973467418866}
   - component: {fileID: 1370555563239141536}
   - component: {fileID: 4323817692403713414}
+  - component: {fileID: 5910790194530369490}
   m_Layer: 5
   m_Name: Conditional Statement End
   m_TagString: Untagged
@@ -944,9 +945,36 @@ MonoBehaviour:
   execute: {fileID: 0}
   isBeingDragged: 0
   isEndOfStatement: 1
+  isMovable: 1
   cam: {fileID: 919395056216382057, guid: 32322b25300ee884abb38d4e07d0f7ea, type: 3}
   isDropField: 0
   _mainParent: {fileID: 0}
+--- !u!61 &5910790194530369490
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8600982835421067499}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 10}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 400, y: 70}
+  m_EdgeRadius: 0
 --- !u!1 &8615797791643379790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,6 +1073,7 @@ MonoBehaviour:
   execute: {fileID: 0}
   isBeingDragged: 0
   isEndOfStatement: 0
+  isMovable: 1
   cam: {fileID: 919395056216382057, guid: 32322b25300ee884abb38d4e07d0f7ea, type: 3}
   isDropField: 0
   _mainParent: {fileID: 0}

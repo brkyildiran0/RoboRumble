@@ -400,8 +400,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b93a321a9649a44b81b6799e9064e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftOperand: {fileID: 4333707568199845212}
-  middleOperator: {fileID: 4983122858404726646}
+  leftOperand: 0
+  middleOperator: 0
   rightOperand: {fileID: 5361703124750747964}
 --- !u!1 &5839689360937494400
 GameObject:
@@ -415,6 +415,7 @@ GameObject:
   - component: {fileID: 2392600196322193305}
   - component: {fileID: 3842515911655452619}
   - component: {fileID: 1898024875122645741}
+  - component: {fileID: 7615856397505111314}
   m_Layer: 5
   m_Name: Conditional Statement End
   m_TagString: Untagged
@@ -492,11 +493,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a51e02d4ee434d8a28b18965422e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  execute: {fileID: 0}
   isBeingDragged: 0
   isEndOfStatement: 1
+  isMovable: 1
   cam: {fileID: 919395056216382057, guid: 32322b25300ee884abb38d4e07d0f7ea, type: 3}
   isDropField: 0
   _mainParent: {fileID: 0}
+--- !u!61 &7615856397505111314
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5839689360937494400}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 10}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 400, y: 70}
+  m_EdgeRadius: 0
 --- !u!1 &5892710147174709029
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,8 +623,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a51e02d4ee434d8a28b18965422e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  execute: {fileID: 0}
   isBeingDragged: 0
   isEndOfStatement: 0
+  isMovable: 1
   cam: {fileID: 919395056216382057, guid: 32322b25300ee884abb38d4e07d0f7ea, type: 3}
   isDropField: 0
   _mainParent: {fileID: 0}

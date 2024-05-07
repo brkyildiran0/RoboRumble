@@ -101,7 +101,7 @@ public class EventClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     {
         if (gameObject.GetComponent<Entity>().getSelected() == false)
         {
-            for (int i = 0; i < s.startingEntities.Count; i++)
+                for (int i = 0; i < s.startingEntities.Count; i++)
             {
                 if (s.startingEntities[i].GetComponent<Entity>() == gameObject.GetComponent<Entity>())
                 {
