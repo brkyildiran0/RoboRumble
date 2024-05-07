@@ -6,19 +6,33 @@ public class RotationController : Execute
 {
     private void OnEnable()
     {
+        subscribe();
+    }
+    private void OnDisable()
+    {
+        unsubscribe();
+    }
+    
+    private void subscribe()
+    {
         EventManager.RotateEntity += RotateEntity;
+    }
+    
+    private void unsubscribe()
+    {
+        EventManager.RotateEntity -= RotateEntity;
     }
     
     private void RotateEntity(Entity entity, int amount)
     {
         if (entity == this.entity)
         {
-            RotateObject(amount);
+                RotateObject(amount);
         }
     }
     
-    private void RotateObject(int amount )
+    private void RotateObject(int amount)
     {
-        transform.GetChild(2).transform.Rotate(0, 0, amount);
+        transform.GetChild(3).transform.Rotate(0, 0, amount);
     }
 }
