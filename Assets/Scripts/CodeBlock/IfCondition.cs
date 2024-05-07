@@ -14,7 +14,7 @@ public class IfCondition : Execute
     public override void Awake()
     {
         base.Awake();
-        if (hasElse)
+        if (elseCondition != null)
         {
             elseCondition.gameObject.SetActive(hasElse);
         }
