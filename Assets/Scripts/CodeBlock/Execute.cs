@@ -15,7 +15,7 @@ public abstract class Execute : MonoBehaviour
     public Entity entity;
 
 
-    private void Awake()
+    public virtual void Awake()
     {
         _image = GetComponent<Image>();
         _startingColor = _image.color;
