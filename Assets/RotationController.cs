@@ -6,6 +6,7 @@ public class RotationController : Execute
 {
     private void OnEnable()
     {
+        entity = GetComponent<Entity>();
         subscribe();
     }
     private void OnDisable()
