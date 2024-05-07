@@ -10,6 +10,7 @@ public abstract class Execute : MonoBehaviour
 {
     private Image _image;
     private Color _startingColor;
+    private Sequence _sequence;
     
     public Entity entity;
 
@@ -45,14 +46,22 @@ public abstract class Execute : MonoBehaviour
 
     public void SubsribeToTick()
     {
+        Debug.Log("subscribed to tick");
         EventManager.OnTick += ExecuteContent;
         EventManager.OnTick += ScaleAnimation;
     }
 
+    private void OnDestroy()
+    {
+        UnSubscribeToTick();
+    }
+
     public void UnSubscribeToTick()
     {
+        Debug.Log("unsubscribed to tick");
         EventManager.OnTick -= ExecuteContent;
         EventManager.OnTick -= ScaleAnimation;
+        _sequence?.Kill();
     }
 
     public void SetEntity(Entity entityToAssign)
@@ -94,9 +103,9 @@ public abstract class Execute : MonoBehaviour
 
     public void ScaleAnimation()
     {
-        Sequence sequence = DOTween.Sequence();
-        sequence.AppendCallback(() => { _image.color = Color.red; });
-        sequence.AppendInterval(TickCounter.Instance.tickInterval);
-        sequence.AppendCallback(() => { _image.color = _startingColor; });
+        _sequence = DOTween.Sequence();
+        _sequence.AppendCallback(() => { _image.color = Color.red; });
+        _sequence.AppendInterval(TickCounter.Instance.tickInterval);
+        _sequence.AppendCallback(() => { _image.color = _startingColor; });
     }
 }

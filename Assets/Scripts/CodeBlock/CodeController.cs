@@ -32,6 +32,7 @@ public class CodeController : MonoBehaviour
 
         for (int i = 0; i < startingBlocks.Count; i++)
         {
+            Debug.Log("setting blocksasd");
             startingBlocks[i].GetComponent<Execute>().SubsribeToTick();
 
             if (i != 0)
