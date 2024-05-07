@@ -161,7 +161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9166728581810488202, guid: cbfb6fc379ea4b44ea24267e7329aa02, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9166728581810488202, guid: cbfb6fc379ea4b44ea24267e7329aa02, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
