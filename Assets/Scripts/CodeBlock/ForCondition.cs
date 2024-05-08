@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class ForCondition : Execute
 {
+    public override bool canGetInside => true;
     public Condition condition;
 
     public override void ExecuteContent()

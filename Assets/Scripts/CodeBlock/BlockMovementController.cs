@@ -208,7 +208,8 @@ public class BlockMovementController : MonoBehaviour, IBeginDragHandler, IDragHa
                 {
                     return;
                 }
-                if (Mathf.Abs(_currentMinDistance) < insideThreshold)
+                if (Mathf.Abs(_currentMinDistance) < insideThreshold && !_currentMinTransform.GetComponent<BlockMovementController>().isEndOfStatement && 
+                    _currentMinTransform.GetComponent<Execute>().canGetInside)
                 {
                     Debug.Log("here 1");
                     transform.SetParent(_currentMinTransform);

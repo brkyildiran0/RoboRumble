@@ -13,6 +13,8 @@ public class Entity : MonoBehaviour
     private MovementController movementController;
     private CollisionController collisionController;
     public bool isSelected;
+
+    private int i;
     
 
     private void Awake()
@@ -72,8 +74,20 @@ public class Entity : MonoBehaviour
                 return currentTile.col;
             case(Condition.SymbolType.yPos):
                 return currentTile.row;
+            case(Condition.SymbolType.i):
+                return i;
             default:
                 return 0;
+        }
+    }
+
+    public void SetValue(Condition.SymbolType symbolType, int value)
+    {
+        switch (symbolType)
+        {
+            case (Condition.SymbolType.i):
+                i = value;
+                break;
         }
     }
     

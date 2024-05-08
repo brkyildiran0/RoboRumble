@@ -126,14 +126,14 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 2
+  m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 4
+  m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 2
+  m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 14
   m_CharacterLimit: 2
@@ -593,8 +593,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a51e02d4ee434d8a28b18965422e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  execute: {fileID: 0}
   isBeingDragged: 0
   isEndOfStatement: 0
+  isMovable: 1
   cam: {fileID: 919395056216382057, guid: 32322b25300ee884abb38d4e07d0f7ea, type: 3}
   isDropField: 0
   _mainParent: {fileID: 0}

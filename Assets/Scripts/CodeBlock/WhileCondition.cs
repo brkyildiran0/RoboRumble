@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class WhileCondition : Execute
 {
-
+    public override bool canGetInside => true;
+    
     public Condition condition;
     public override void ExecuteContent()
     {
