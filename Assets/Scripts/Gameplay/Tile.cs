@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +16,6 @@ public class Tile : MonoBehaviour
         this.row = row;
         this.col = col;
     }
-    
 
     public bool Remove(Entity entity)
     {
@@ -43,5 +41,19 @@ public class Tile : MonoBehaviour
     {
         objectsUnderTile.Add(entity);
         entity.SetCurrentTile(this);
+
+        if (IsVoidTile())
+        {
+            Debug.Log("Player hit a void tile!");
+        }
+    }
+
+    private bool IsVoidTile()
+    {
+        // Implement your logic to determine if this tile is a void tile
+        // For example, you might check a specific property of the tile
+        // or its position in the game world.
+        // Replace the return statement below with your actual logic.
+        return false; // Placeholder, replace with actual logic
     }
 }

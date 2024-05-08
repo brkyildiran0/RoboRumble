@@ -36,8 +36,12 @@ public class MovementCompiler
                 DeleteAllMovementsForEntity(i, movement.entity);
                 break;
             }
+
+            TileMapController.Instance.IsTileVoid(movement.startTile);
             
             movement.entity.GetMovementController().DisplaceToAnotherTile(movement.endTile);
+
+            
             
             Debug.Log("executed movement " + movement.startTile + " to " + movement.endTile);
             SetTilesForEntity(movement);
