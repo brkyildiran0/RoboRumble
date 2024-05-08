@@ -12,6 +12,7 @@ public class Condition : MonoBehaviour
     public TextMeshProUGUI rightOperand;
 
     private int _counter = 0;
+    private Entity _entity;
 
     public enum SymbolType
     {
@@ -20,10 +21,12 @@ public class Condition : MonoBehaviour
         Equals,
         xPos,
         yPos,
+        i
     }
 
     public bool IsTrue(Entity entity)
     {
+        _entity = entity;
         if (alwaysTrue)
         {
             return true;
@@ -75,6 +78,12 @@ public class Condition : MonoBehaviour
 
     private int ParseInteger(string text)
     {
+        if (text.IndexOf('i') > -1)
+        {
+            Debug.Log("returning: " + _entity.GetValue(SymbolType.i));
+            return _entity.GetValue(SymbolType.i);
+        }
+        
         string stripped = "";
         foreach (var character in text)
         {
@@ -83,6 +92,7 @@ public class Condition : MonoBehaviour
                 stripped += character;
             }
         }
+        Debug.Log("returning stripped: " + int.Parse(stripped));
         return int.Parse(stripped);
     }
 

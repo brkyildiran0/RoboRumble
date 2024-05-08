@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public abstract class Execute : MonoBehaviour
 {
+    public virtual bool canGetInside => false;
+
     private Image _image;
     private Color _startingColor;
     private Sequence _sequence;
@@ -36,7 +38,7 @@ public abstract class Execute : MonoBehaviour
 
     public void NotifyParent()
     {
-        Debug.Log(name);
+        Debug.Log("notify8: " + name);
         transform.parent.GetComponent<Execute>().ChildExecutionComplete(transform.GetSiblingIndex());
     }
 
