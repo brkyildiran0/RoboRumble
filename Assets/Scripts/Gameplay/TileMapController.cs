@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 namespace Gameplay
@@ -41,8 +42,13 @@ namespace Gameplay
             var sprite = tilemap.GetSprite(cellPos);
             Debug.Log("getting " + cellPos + " sprite " + sprite.name);
             if( sprite != null && sprite.name == "void"){
+                if(SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex")){
+                    PlayerPrefs.SetInt("ReachedIndex",SceneManager.GetActiveScene().buildIndex+1);
+                    PlayerPrefs.SetInt("UnlockedLevel",PlayerPrefs.GetInt("UnlockedLevel",1)+1);
+                    PlayerPrefs.SetInt("CompletedLevel",PlayerPrefs.GetInt("CompletedLevel",0)+1);
+                    PlayerPrefs.Save();
+                }
                 gameOverManager.WinLevel();
-                Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                 return true;
             }
             return false;

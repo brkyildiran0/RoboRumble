@@ -6,19 +6,25 @@ using UnityEngine.UI;
 
 public class LevelSelector : MonoBehaviour
 {
-    public int level;
-    public Text textLevel;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        textLevel.text = level.ToString();
-        
+    public Button[] buttons;
+    
+    private void Awake(){
+        int unlockedLevels = PlayerPrefs.GetInt("UnlockedLevel",1);
+        int completedLevels = PlayerPrefs.GetInt("CompletedLevel",0);
+        for (int i = 0; i < buttons.Length; i++){
+            buttons[i].interactable = false;
+        }
+        for (int i = 0; i < unlockedLevels;i++){
+            buttons[i].interactable = true;
+        }
+        for (int i = 0; i < completedLevels;i++){
+            Debug.Log("Completed level:" + buttons[i].name);
+        }
     }
 
-    public void OpenScene(){
+    public void OpenScene(int textLevel){
         //AudioManager.Instance.PlaySFX("ButtonAt");
-        SceneManager.LoadScene("Level "+level.ToString());
+        SceneManager.LoadScene("Level "+textLevel.ToString());
         Time.timeScale = 1;
     }
 }
