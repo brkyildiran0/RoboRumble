@@ -153,7 +153,7 @@ public class BlockMovementController : MonoBehaviour, IBeginDragHandler, IDragHa
             return;
         }
         
-        EditorUtility.SetDirty(gameObject);
+        //EditorUtility.SetDirty(gameObject);
         
         Debug.Log("drag for " +name);
         Vector2 pos;
@@ -239,7 +239,7 @@ public class BlockMovementController : MonoBehaviour, IBeginDragHandler, IDragHa
     public void OnEndDrag(PointerEventData eventData)
     {
         _collider.isTrigger = !_collider.isTrigger;
-        EditorUtility.SetDirty(_collider);
+        //EditorUtility.SetDirty(_collider);
         AudioManager.Instance.PlaySFX("ButtonAt");
         SetIsDraggedRecursive(false);
     }
