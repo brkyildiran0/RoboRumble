@@ -4612,6 +4612,10 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 75
       objectReference: {fileID: 0}
+    - target: {fileID: 8551105448122944364, guid: 5e628d9a881111a4fafe6b2fefe028f4, type: 3}
+      propertyPath: gameOverManager
+      value: 
+      objectReference: {fileID: 499433051}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e628d9a881111a4fafe6b2fefe028f4, type: 3}
 --- !u!224 &1153821806 stripped
@@ -4733,9 +4737,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868f0d6105fc4bdaad4f219b3be2cdaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverPanelParent: {fileID: 1985173512}
-  gameOverSuccess: {fileID: 119069056}
-  gameOverFailure: {fileID: 2031678384}
 --- !u!1 &1176680002
 GameObject:
   m_ObjectHideFlags: 0
@@ -9712,8 +9713,8 @@ Tilemap:
   - first: {x: 11, y: 15, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9722,8 +9723,8 @@ Tilemap:
   - first: {x: 12, y: 15, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -11283,16 +11284,16 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 7f14315a36930a5409ce5a145687d9aa, type: 2}
-  - m_RefCount: 258
+  - m_RefCount: 256
     m_Data: {fileID: 11400000, guid: 87a8dee9ad13e3546b848348c8ec83e0, type: 2}
-  - m_RefCount: 124
+  - m_RefCount: 126
     m_Data: {fileID: 11400000, guid: 023dda9213496b54691ef01da1eea01a, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 762a0051098d88b4791db68afdbfbe03, type: 3}
-  - m_RefCount: 258
+  - m_RefCount: 256
     m_Data: {fileID: 21300000, guid: 350c638febd40424484bc7ad7ae34c40, type: 3}
-  - m_RefCount: 124
+  - m_RefCount: 126
     m_Data: {fileID: 21300000, guid: 6debecf1bf3e999439bcd1734493501a, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 384
@@ -12988,7 +12989,7 @@ MonoBehaviour:
   - {fileID: 1832513017}
   startingEntities:
   - {fileID: 1975992941}
-  startingPositions: 000000000b000000
+  startingPositions: 020000000b000000
   entityText: {fileID: 1039853806}
   level: 1
 --- !u!4 &2100061681
