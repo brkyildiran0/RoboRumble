@@ -10,6 +10,10 @@ public class Health : MonoBehaviour
     public int currentHealth;
 
     public Slider healthBar;
+    
+    public GameOverManager gameOverManager;
+    
+    
 
     private void Start()
     {
@@ -33,6 +37,11 @@ public class Health : MonoBehaviour
         healthBar.value = currentHealth;
         if (currentHealth == 0)
         {
+            if (gameObject.transform.parent.tag == "Blue Entity")
+            {
+                gameOverManager.LoseLevel();
+            }
+            
             gameObject.transform.parent.gameObject.SetActive(false);
             gameObject.transform.parent.gameObject.GetComponent<RaycastLazer>().enabled = false;
         }
