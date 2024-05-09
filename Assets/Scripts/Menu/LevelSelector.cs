@@ -27,4 +27,17 @@ public class LevelSelector : MonoBehaviour
         SceneManager.LoadScene("Level "+textLevel.ToString());
         Time.timeScale = 1;
     }
+
+    void Update(){
+        if (Input.GetKeyDown(KeyCode.U)){
+            PlayerPrefs.SetInt("UnlockedLevel",PlayerPrefs.GetInt("UnlockedLevel",1)+1);
+            Debug.Log("UNLOCKED A LEVEL");
+        }
+        if (Input.GetKeyDown(KeyCode.D)){
+            PlayerPrefs.DeleteAll();
+        }
+
+    }
+
+
 }
