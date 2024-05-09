@@ -4695,7 +4695,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SETTINGS
+  m_text: RESTART
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5902,7 +5902,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1709298748}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: Settings
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14031,7 +14031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5892710147174709028, guid: ed24ed8ecdf034a40b5dbc68e6bf6307, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 5892710147174709028, guid: ed24ed8ecdf034a40b5dbc68e6bf6307, type: 3}
       propertyPath: m_AnchorMax.x
