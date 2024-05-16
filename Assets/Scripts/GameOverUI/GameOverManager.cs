@@ -33,10 +33,12 @@ public class GameOverManager : MonoBehaviour
     public void Restart(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1f;
-        GameIsPaused = true;
+        GameIsPaused = false;
     }
 
     public void Quit(){
         SceneManager.LoadScene("LevelSelection");
+        Time.timeScale = 1f;
+        GameIsPaused = false;
     }
 }
