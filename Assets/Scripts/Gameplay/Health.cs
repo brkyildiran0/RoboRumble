@@ -37,7 +37,7 @@ public class Health : MonoBehaviour
         healthBar.value = currentHealth;
         if (currentHealth == 0)
         {
-            if (gameObject.transform.parent.tag == "Blue Entity")
+            if (gameObject.transform.parent.CompareTag("Player"))
             {
                 gameOverManager.LoseLevel();
             }

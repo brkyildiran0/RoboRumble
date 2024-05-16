@@ -265,6 +265,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blue Entity
       objectReference: {fileID: 0}
+    - target: {fileID: 145981645405652682, guid: fe771b67e1e83ab47890f798281f515d, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 145981645405652683, guid: fe771b67e1e83ab47890f798281f515d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -415,6 +419,7 @@ MonoBehaviour:
   firePoint: {fileID: 7807556895214080753}
   lineRenderer: {fileID: 6399815109237747415}
   itself: {fileID: 0}
+  currentTile: {fileID: 0}
 --- !u!114 &7585312085033791722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,6 +578,7 @@ MonoBehaviour:
   maxHealth: 12
   currentHealth: 0
   healthBar: {fileID: 7965706285845264319}
+  gameOverManager: {fileID: 0}
 --- !u!114 &7965706285845264319 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2415715076349985043, guid: 01c984481e23c4841ad12a0098104a6b, type: 3}
